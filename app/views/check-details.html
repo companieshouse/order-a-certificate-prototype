@@ -12,7 +12,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/order-a-certificate/contact-details-email"
+    href: "ordering-journey"
   }) }}
 {% endblock %}
 
@@ -201,7 +201,7 @@
               text: "Additional copies"
             },
             value: {
-              text: "£20.00"
+              text: "0"
             },
             actions: {
               items: [
@@ -218,7 +218,7 @@
               text: "Total"
             },
             value: {
-              text: "£70.00"
+              text: "£50.00"
             },
             actions: {
               items: [
@@ -240,7 +240,7 @@
 
         {{ govukButton({
           text: "Continue to payment",
-          href:"/order-a-certificate/payment"
+          href:"payment-service"
         }) }}
 
       </form>

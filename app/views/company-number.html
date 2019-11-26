@@ -9,14 +9,13 @@
 {% block beforeContent %}
   {{ govukBackLink({
   text: "Back",
-  href: "/order-a-certificate/CHS-signin"
+  href: "CHS-signin"
 }) }}
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="choose-certificate-type" method="post">
         {{ govukInput({
           label: {
           text: "What is the company number? ",
@@ -36,10 +35,9 @@
 
         {{ govukButton({
           text: "Continue",
-          href: "/order-a-certificate/confirm-company"
+          href: "confirm-company"
         }) }}
 
-      </form>
     </div>
   </div>
 {% endblock %}
