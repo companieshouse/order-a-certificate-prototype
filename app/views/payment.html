@@ -1,0 +1,20 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  GOV.UK Pay
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-two-thirds">
+		<h1 class="govuk-heading-xl">GOV.UK Pay</h1> 
+	     {{ govukButton({
+	     	text: "Continue",
+	     	href: "/order-a-certificate/confirmation"
+	     }) }}
+	 </div>
+ </div>
+{% endblock %}

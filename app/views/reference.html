@@ -1,0 +1,37 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+ Tell us about customer reference
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/email"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Customer reference</h1>
+    {{ govukInput({
+      label: {
+      text: "Your customer reference"
+    },
+    classes: "govuk-input--width-20",
+    id: "width-20",
+    name: "width-20"
+    }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "/order-a-certificate/check-details"
+    }) }}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Tell us certificate type
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/order-a-certificate/confirm-company"
+  }) }}
+{% endblock %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+    {{ govukRadios({
+      idPrefix: "what-type-of-certificate",
+      name: "what-type-of-certificate",
+      fieldset: {
+        legend: {
+          text: "Type of certificate",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "incorporation",
+          text: "Incorporation"
+        },
+        {
+          value: "incorporation-change-of-name",
+          text: "Incorporation with all changes of name"
+        },
+        {
+          value: "incorporation-with-last-name-change-only",
+          text: "Incorporation with last name change only"
+        },
+        {
+          value: "dissolution-liquidation",
+          text: "Dissolution/Liquidation"
+        }
+
+      ]
+    }) }}
+
+    {{ govukButton({
+     text: "Continue",
+     href: "/order-a-certificate/more-information"
+    }) }}
+
+</div>
+</div>
+{% endblock %}

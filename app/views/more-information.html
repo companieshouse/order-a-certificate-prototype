@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Tell us certificate details
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/order-a-certificate/choose-certificate-type"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    {{ govukCheckboxes({
+      idPrefix: "more-info",
+      name: "more-info",
+      fieldset: {
+      legend: {
+      text: "What information do you need on the certificate?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--xl"
+    }
+  },
+  hint: {
+    text: "Select all that apply."
+  },
+  items: [
+    {
+      value: "good-standing",
+      text: "Good standing"
+    },
+    {
+      value: "directors",
+      text: "Directors"
+    },
+    {
+      value: "company-objects",
+      text: "Company objects"
+    },
+    {
+      value: "secretaries",
+      text: "Secretaries"
+    },
+    {
+      value: "registered-office",
+      text: "Registered office"
+    }
+  ]
+}) }}
+
+{{ govukTextarea({
+  name: "more-detail",
+  id: "more-detail",
+  label: {
+    text: "Extra information"
+  },
+  hint: {
+    text: "Add any details about the extra information you need."
+  }
+}) }}
+
+{{ govukButton({
+  text: "Continue",
+  href: "/order-a-certificate/delivery-extra-copy"
+}) }}
+
+</div>
+{% endblock %}
