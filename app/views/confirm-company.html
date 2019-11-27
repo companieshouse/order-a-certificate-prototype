@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Confirm the company
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "company-number"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">Check company details</h1>
+
+      {{ govukTable({
+        firstCellIsHeader: true,
+        classes: "align-top",
+        rows: [
+        [
+          {
+            text: "Company name"
+          },
+          {
+            text: "Testing Limited"
+          }
+         ],
+        [
+          {
+            text: "Company number"
+          },
+          {
+            text: "07838150"
+          }
+        ],
+        [
+          {
+            text: "Status"
+          },
+          {
+            html: "Active"
+          }
+        ],
+        [
+          {
+            text: "Incorporation date"
+          },
+          {
+            text: "7 November 2011"
+          }
+        ],
+        [
+          {
+            text: "Company type"
+          },
+          {
+            text: "Private limited Company"
+          }
+        ],
+        [
+          {
+            text: "Registered office address"
+          },
+          {
+            text: "Delta 606 Welton Road, Delta Office Park, Swindon, United Kingdom, SN5 7XF"
+          }
+        ]
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        href: "ordering-journey"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Companies House Sign In
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "start"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
+
+      <form action="company-number" method="post">
+        {{ govukInput({
+          label: {
+          text: "Email address"
+        },
+        id: "email",
+        name: "email"
+      }) }}
+
+      {{ govukInput({
+        label: {
+        text: "Password"
+      },
+      id: "password",
+      name: "password"
+      }) }}
+
+      {{ govukButton({
+        text: "Sign in"
+      }) }}
+
+        <p> <a href="" class="govuk-link govuk-link--no-visited-state">Register a new account</a> </p>
+        
+        <p> <a href="" class="govuk-link govuk-link--no-visited-state">I've forgotten my password</a> </p>
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

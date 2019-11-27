@@ -1,0 +1,55 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Tell us about delivery
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/order-a-certificate/delivery-extra-copy"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      {{ govukRadios({
+        idPrefix: "delivery-method",
+        name: "delivery-method",
+        fieldset: {
+          legend: {
+            text: "When would you like the certificate delivered?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        items: [
+          {
+            value: "next-day",
+            text: "Next day (£50.00)",
+            hint: { 
+              html: "For orders received by 2pm Monday to Friday we will do our utmost to despatch on the same day by Royal Mail Special Delivery or it will be available for collection at regional offices"
+            }
+          },
+          {
+            value: "standard",
+            text: "Standard (£15.00)",
+            hint: {
+              text:"Orders are satisfied within 4 working days of their receipt"
+          }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+       text: "Continue",
+       href: "/order-a-certificate/delivery-method"
+      }) }}
+  </div>
+</div>
+{% endblock %}
