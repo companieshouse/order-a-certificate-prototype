@@ -1,53 +1,54 @@
 
 {% extends "layout.html" %}
 
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}
-  Tell us certificate type
+  Tell us about object details
 {% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "confirm-company"
+    href: ""
   }) }}
 {% endblock %}
 
-
 {% block content %}
 <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds">
+
     
+
     {{ govukRadios({
-      idPrefix: "what-type-of-certificate",
-      name: "what-type-of-certificate",
+      idPrefix: "object-details",
+      name: "object-details",
       fieldset: {
         legend: {
-          text: "Type of certificate",
+          text: "Would you like a summary of the Main Objects?",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
       },
       items: [
         {
-          value: "incorporation",
-          text: "Incorporation"
+          value: "objects-yes",
+          text: "Yes"
         },
         {
-          value: "dissolution-liquidation",
-          text: "Dissolution/Liquidation"
+          value: "objects-no",
+          text: "No"
         }
-
       ]
     }) }}
 
-    {{ govukButton({
-     text: "Continue",
-     href: "more-information"
-    }) }}
+    
 
-</div>
+    {{ govukButton({
+      text: "Continue",
+      href: ""
+    }) }}
+  </div>
 </div>
 {% endblock %}

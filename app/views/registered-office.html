@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Tell us about registered office
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukCheckboxes({
+      idPrefix: "registered-office",
+      name: "registered-office",
+      fieldset: {
+        legend: {
+          text: "Registered office",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      hint: {
+        text: "Select all that apply."
+      },
+      items: [
+        {
+          value: "current-registered-office",
+          text: "Current registered office address"
+        },
+        {
+          value: "incorporation-registered-office",
+          text: "Incorporation registered office address"
+        },
+        {
+          value: "all",
+          text: "All registered office addresses"
+        }
+      ]
+    }) }}
+    
+
+    {{ govukButton({
+      text: "Continue",
+      href: ""
+    }) }}
+  </div>
+</div>
+{% endblock %}
