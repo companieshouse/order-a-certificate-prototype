@@ -12,7 +12,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "ordering-journey"
+    href: "reference"
   }) }}
 {% endblock %}
 
@@ -21,7 +21,7 @@
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
       <h1 class="govuk-heading-xl">Check your order details</h1>
-      <h2 class="govuk-heading-m">Delivery details</h2>
+      <h2 class="govuk-heading-m">Contact details</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -39,23 +39,6 @@
                   href: "#",
                   text: "Change",
                   visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Address"
-            },
-            value: {
-              html: "72 Guild Street<br>London<br>SE23 6FH"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "address"
                 }
               ]
             }
@@ -80,7 +63,7 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Certificate details</h2>
+      <h2 class="govuk-heading-m">Order details</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -91,40 +74,39 @@
             },
             value: {
               text: "Incorporation"
+            }
+          },
+           {
+            key: {
+              text: "Good standing"
+            },
+            value: {
+              text: "Yes"
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "certificate type"
+                  visuallyHiddenText: "additional information"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Delivery option"
+              text: "Delivery type"
             },
             value: {
-              text: "Same day (£50.00)"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "delivery option"
-                }
-              ]
+              text: "Standard (4 days)"
             }
           },
           {
             key: {
-              text: "Delivery method"
+              text: "Collection office"
             },
             value: {
-              text: "Post and email"
+              text: "London"
             },
             actions: {
               items: [
@@ -138,99 +120,29 @@
           },
           {
             key: {
-              text: "Additional copies"
+              text: "Reference details"
             },
             value: {
-              text: "No"
+              text: "Client name and postcode"
             },
             actions: {
               items: [
                 {
                   href: "#",
                   text: "Change",
-                  visuallyHiddenText: "additional copies"
+                  visuallyHiddenText: "delivery method"
                 }
               ]
             }
           },
           {
             key: {
-              text: "Additional information"
-            },
-            value: {
-              html: "Good standing</br> Directors"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "additional information"
-                }
-              ]
-            }
-          }
-
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">Costs</h2>
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Certificate"
+              text: "Cost"
             },
             value: {
               text: "£50.00"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "cost"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Additional copies"
-            },
-            value: {
-              text: "0"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "additional cost"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Total"
-            },
-            value: {
-              text: "£50.00"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "additional cost"
-                }
-              ]
             }
           }
-          
         ]
       }) }}
 
@@ -240,7 +152,7 @@
 
         {{ govukButton({
           text: "Continue to payment",
-          href:"payment-service"
+          href:"gov-pay"
         }) }}
 
       </form>
