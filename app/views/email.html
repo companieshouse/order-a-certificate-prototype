@@ -11,7 +11,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/order-a-certificate/contact-details-collect"
+    href: "collection"
   }) }}
 {% endblock %}
 
@@ -24,7 +24,7 @@
           text: "Email address"
         },
         hint: {
-          text: "We’ll only use this to send you a copy of the certificate"
+          text: "We’ll only use this to contact you about your order"
         },
         id: "email",
         name: "email",
@@ -37,7 +37,7 @@
 
       {{ govukButton({
         text: "Continue",
-        href: "/order-a-certificate/reference"
+        href: "telephone-number"
       }) }}
   </div>
 </div>

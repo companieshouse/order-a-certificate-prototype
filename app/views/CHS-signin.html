@@ -10,7 +10,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "start"
+    href: "start-now"
   }) }}
 {% endblock %}
 
@@ -20,7 +20,7 @@
 
       <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
 
-      <form action="company-number" method="post">
+      <form action="good-standing" method="post">
         {{ govukInput({
           label: {
           text: "Email address"

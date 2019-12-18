@@ -3,7 +3,10 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% block beforeContent %}
- 
+ {{ govukBackLink({
+    text: "Return to filing history",
+    href: "start"
+  }) }}
 {% endblock %}
 
 {% block pageTitle %}

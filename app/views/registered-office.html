@@ -5,13 +5,13 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% block pageTitle %}
-  Tell us about delivery method
+  Tell us about registered office
 {% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "/delivery-time"
+    href: ""
   }) }}
 {% endblock %}
 
@@ -20,11 +20,11 @@
   <div class="govuk-grid-column-two-thirds">
 
     {{ govukCheckboxes({
-      idPrefix: "delivery",
-      name: "delivery",
+      idPrefix: "registered-office",
+      name: "registered-office",
       fieldset: {
         legend: {
-          text: "How would you like to receive the certifcate for Filings LTD?",
+          text: "Registered office",
           isPageHeading: true,
           classes: "govuk-fieldset__legend--xl"
         }
@@ -33,29 +33,25 @@
         text: "Select all that apply."
       },
       items: [
-
         {
-          value: "collect",
-          text: "Collect from Companies House office",
-          hint: {
-          text: "including Belfast, Cardiff, Edinburgh and London"
-        }
+          value: "current-registered-office",
+          text: "Current registered office address"
         },
         {
-          value: "post",
-          text: "Post"
+          value: "incorporation-registered-office",
+          text: "Incorporation registered office address"
         },
         {
-          value: "email",
-          text: "Email"
+          value: "all",
+          text: "All registered office addresses"
         }
-        
       ]
     }) }}
+    
 
     {{ govukButton({
       text: "Continue",
-      href: "collection"
+      href: ""
     }) }}
   </div>
 </div>
