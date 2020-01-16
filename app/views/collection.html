@@ -19,42 +19,87 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="" method="post" novalidate>
-        {{ govukRadios({
-          idPrefix: "which-companies-house-collection-office-do-you-want-to-collect-from",
-          name: "which-companies-house-collection-office-do-you-want-to-collect-from",
-          fieldset: {
-            legend: {
-              text: "Which Companies House office do you want to collect from?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
-            }
-          },
-          hint: {
-           text: "Opening hours are between 9am to 5pm (Monday to Friday)."
-          },
-          items: [
-            {
-              value: "belfast",
-              text: "Belfast"
+      <form action="/collection" method="post" novalidate>
+        {% if error  == true %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+        {% endif %}
+
+        {% if error  == true %}
+          {{ govukRadios({
+            idPrefix: "which-collection-office",
+            name: "which-collection-office",
+            fieldset: {
+              legend: {
+                text: "Which Companies House office do you want to collect from?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
             },
-            {
-              value: "cardiff",
-              text: "Cardiff"
+            hint: {
+             text: "Opening hours are between 9am to 5pm (Monday to Friday)."
             },
-            {
-              value: "edinburgh",
-              text: "Edinburgh"
+            errorMessage: {
+              text: "Select the Companies House office you want to collect your certificate from"
             },
-            {
-              value: "london",
-              text: "London"
-            }
-          ]
-        }) }}
+            items: [
+              {
+                value: "belfast",
+                text: "Belfast"
+              },
+              {
+                value: "cardiff",
+                text: "Cardiff"
+              },
+              {
+                value: "edinburgh",
+                text: "Edinburgh"
+              },
+              {
+                value: "london",
+                text: "London"
+              }
+            ]
+          }) }}
+        {% else %}
+          {{ govukRadios({
+            idPrefix: "which-collection-office",
+            name: "which-collection-office",
+            fieldset: {
+              legend: {
+                text: "Which Companies House office do you want to collect from?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            hint: {
+             text: "Opening hours are between 9am to 5pm (Monday to Friday)."
+            },
+            items: [
+              {
+                value: "belfast",
+                text: "Belfast"
+              },
+              {
+                value: "cardiff",
+                text: "Cardiff"
+              },
+              {
+                value: "edinburgh",
+                text: "Edinburgh"
+              },
+              {
+                value: "london",
+                text: "London"
+              }
+            ]
+          }) }}
+        {% endif %}
+
         {{ govukButton({
-          text: "Continue",
-          href: "order-details"
+          text: "Continue"
         }) }}
       </form>
     </div>

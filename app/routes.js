@@ -37,25 +37,39 @@ router.post('/CHS-signin', function(req, res) {
 	{
 		res.redirect('good-standing')
 	}
-    
 })
 
 
 router.post('/good-standing', function(req, res) {
 	var errors = [];
-	if(req.session.data['do-you-want-good-standing-information'] == "yes" || req.session.data['do-you-want-good-standing-information'] == "no"){
-		res.redirect('collection')
-	}
-	else
-	{
+	if(typeof req.session.data['do-you-want-good-standing-information'] == 'undefined'){
 		errors.push({text: "Select yes if you want Good Standing information on the certificate", href: "#do-you-want-good-standing-information-error"});
 		res.render('good-standing', {
         	error: true,
         	errorList: errors
       	})
-		
 	}
-    
+	else
+	{
+		res.redirect('collection')
+	}
+})
+
+
+
+router.post('/collection', function(req, res) {
+	var errors = [];
+	if(typeof req.session.data['which-collection-office'] == 'undefined'){
+		errors.push({text: "Select the Companies House office you want to collect your certificate from", href: "#do-you-want-good-standing-information-error"});
+		res.render('collection', {
+        	error: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('order-details')	
+	}
 })
 
 
