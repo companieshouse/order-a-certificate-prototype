@@ -10,7 +10,6 @@
   Good standing information
 {% endblock %}
 
-{% set mainClasses = "govuk-main-wrapper--l" %}
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
@@ -19,33 +18,36 @@
 {% endblock %}
 
 {% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/form-handler" method="post" novalidate>
+        {{ govukRadios({
+          idPrefix: "do-you-want-good-standing-information",
+          name: "do-you-want-good-standing-information",
+          fieldset: {
+            legend: {
+              text: "Do you want Good Standing information on the certificate?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
 
-{{ govukRadios({
-  idPrefix: "do-you-want-good-standing",
-  name: "do-you-want-good-standing",
-  fieldset: {
-    legend: {
-      text: "Do you want Good Standing information on the certificate?",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--xl"
-    }
-  },
-  items: [
-    {
-      value: "yes",
-      text: "Yes"
-    },
-    {
-      value: "no",
-      text: "No"
-    }
-  ]
-}) }}
-
-{{ govukButton({
-  text: "Continue",
-  href: "order-details"
-}) }}
-
-</div>
+        {{ govukButton({
+          text: "Continue",
+          href: "order-details"
+        }) }}
+      </form>
+    </div>
+  </div>
 {% endblock %}
