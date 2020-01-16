@@ -20,22 +20,55 @@
 
       <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
 
-      <form action="good-standing" method="post">
+      <form action="CHS-signin" method="post">
+          {% if errorEmail  == true or errorPassword == true %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+          {% endif %}
+
+        {% if errorEmail  == true %}
+          {{ govukInput({
+            label: {
+            text: "Email address"
+          },
+          id: "email",
+          name: "email",
+          errorMessage: {
+            text: "Email address is required"
+          }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+            text: "Email address"
+          },
+          id: "email",
+          name: "email"
+          }) }}
+        {% endif %}
+        
+      {% if errorPassword  == true %}
         {{ govukInput({
           label: {
-          text: "Email address"
+          text: "Password"
         },
-        id: "email",
-        name: "email"
-      }) }}
-
-      {{ govukInput({
-        label: {
-        text: "Password"
-      },
-      id: "password",
-      name: "password"
-      }) }}
+        id: "password",
+        name: "password",
+        errorMessage: {
+            text: "Password is required"
+          }
+        }) }}
+      {% else %}
+        {{ govukInput({
+          label: {
+          text: "Password"
+        },
+        id: "password",
+        name: "password"
+        }) }}
+      {% endif %}
 
       {{ govukButton({
         text: "Sign in"

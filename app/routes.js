@@ -10,16 +10,35 @@ router.get('/', function (req, res) {
     res.render('start')
   });
 
-router.post('delivery-extra-copy', function(req, res) {
+router.post('/CHS-signin', function(req, res) {
 
-	if(req.session.data['addcopy'] == "Yes"){
-		res.redirect('additional-copies')
+    var errors = [];
+    var emailHasError = false;
+    var passwordHasError = false;
+	
+	if(req.session.data['email'] == ""){
+		emailHasError = true;
+		errors.push({text: "Email address is required", href: "#email-error"});
+	}
+	
+	if(req.session.data['password'] == ""){
+        passwordHasError = true;
+        errors.push({text: "Password is required", href: "#password-error"});
+	}
+
+	if(emailHasError || passwordHasError){
+		res.render('CHS-signin', {
+        	errorEmail: emailHasError,
+        	errorPassword: passwordHasError,
+        	errorList: errors
+      	})
 	}
 	else
 	{
-		res.redirect('delivery-time')
+		res.redirect('good-standing')
 	}
     
 })
+
 
 module.exports = router
