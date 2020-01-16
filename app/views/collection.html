@@ -20,14 +20,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="/collection" method="post" novalidate>
-        {% if error  == true %}
-            {{ govukErrorSummary({
-              titleText: "There is a problem",
-              errorList: errorList
-            }) }}
-        {% endif %}
 
         {% if error  == true %}
+          {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+          }) }}
+
           {{ govukRadios({
             idPrefix: "which-collection-office",
             name: "which-collection-office",

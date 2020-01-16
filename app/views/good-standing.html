@@ -21,15 +21,12 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="/good-standing" method="post">
-         {% if error  == true %}
-            {{ govukErrorSummary({
+        {% if error  == true %}
+          {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
-            }) }}
-          {% endif %}
+          }) }}
 
-
-        {% if error  == true %}
           {{ govukRadios({
             idPrefix: "do-you-want-good-standing-information",
             name: "do-you-want-good-standing-information",

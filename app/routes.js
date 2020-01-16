@@ -73,7 +73,6 @@ router.post('/collection', function(req, res) {
 })
 
 router.post('/order-details', function(req, res) {
-
     var errors = [];
 	if(req.session.data['full-name'] == ""){
 		errors.push({text: "Full name is required", href: "#full-name-error"});
@@ -85,6 +84,21 @@ router.post('/order-details', function(req, res) {
 	else
 	{
 		res.redirect('telephone-number')
+	}
+})
+
+router.post('/telephone-number', function(req, res) {
+    var errors = [];
+	if(req.session.data['telephone-number'] == ""){
+		errors.push({text: "Telephone number is required", href: "#telephone-number-error"});
+		res.render('telephone-number', {
+        	errorTelephoneNumber: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('reference')
 	}
 })
 
