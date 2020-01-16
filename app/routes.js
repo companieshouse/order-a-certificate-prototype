@@ -60,7 +60,7 @@ router.post('/good-standing', function(req, res) {
 router.post('/collection', function(req, res) {
 	var errors = [];
 	if(typeof req.session.data['which-collection-office'] == 'undefined'){
-		errors.push({text: "Select the Companies House office you want to collect your certificate from", href: "#do-you-want-good-standing-information-error"});
+		errors.push({text: "Select the Companies House office you want to collect your certificate from", href: "#which-collection-office-error"});
 		res.render('collection', {
         	error: true,
         	errorList: errors
@@ -69,6 +69,22 @@ router.post('/collection', function(req, res) {
 	else
 	{
 		res.redirect('order-details')	
+	}
+})
+
+router.post('/order-details', function(req, res) {
+
+    var errors = [];
+	if(req.session.data['full-name'] == ""){
+		errors.push({text: "Full name is required", href: "#full-name-error"});
+		res.render('order-details', {
+        	errorName: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('telephone-number')
 	}
 })
 
