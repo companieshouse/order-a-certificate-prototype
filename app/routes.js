@@ -41,4 +41,22 @@ router.post('/CHS-signin', function(req, res) {
 })
 
 
+router.post('/good-standing', function(req, res) {
+	var errors = [];
+	if(req.session.data['do-you-want-good-standing-information'] == "yes" || req.session.data['do-you-want-good-standing-information'] == "no"){
+		res.redirect('collection')
+	}
+	else
+	{
+		errors.push({text: "Select yes if you want Good Standing information on the certificate", href: "#do-you-want-good-standing-information-error"});
+		res.render('good-standing', {
+        	error: true,
+        	errorList: errors
+      	})
+		
+	}
+    
+})
+
+
 module.exports = router

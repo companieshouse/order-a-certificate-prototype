@@ -20,32 +20,66 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/form-handler" method="post" novalidate>
-        {{ govukRadios({
-          idPrefix: "do-you-want-good-standing-information",
-          name: "do-you-want-good-standing-information",
-          fieldset: {
-            legend: {
-              text: "Do you want Good Standing information on the certificate?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--xl"
-            }
-          },
-          items: [
-            {
-              value: "yes",
-              text: "Yes"
+      <form action="/good-standing" method="post">
+         {% if error  == true %}
+            {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+            }) }}
+          {% endif %}
+
+
+        {% if error  == true %}
+          {{ govukRadios({
+            idPrefix: "do-you-want-good-standing-information",
+            name: "do-you-want-good-standing-information",
+            fieldset: {
+              legend: {
+                text: "Do you want Good Standing information on the certificate?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
             },
-            {
-              value: "no",
-              text: "No"
-            }
-          ]
-        }) }}
+            errorMessage: {
+              text: "Select yes if you want Good Standing information on the certificate"
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+        {% else %}
+          {{ govukRadios({
+            idPrefix: "do-you-want-good-standing-information",
+            name: "do-you-want-good-standing-information",
+            fieldset: {
+              legend: {
+                text: "Do you want Good Standing information on the certificate?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes"
+              },
+              {
+                value: "no",
+                text: "No"
+              }
+            ]
+          }) }}
+        {% endif %}
 
         {{ govukButton({
-          text: "Continue",
-          href: "collection"
+          text: "Continue"
         }) }}
       </form>
     </div>
