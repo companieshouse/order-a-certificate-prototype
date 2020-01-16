@@ -1,6 +1,7 @@
 
 {% extends "layout.html" %}
 
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
@@ -16,68 +17,48 @@
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="" method="post" novalidate>
 
-    <h1 class="govuk-heading-xl">Collection details</h1>
+        {{ govukRadios({
+          idPrefix: "which-companies-house-collection-office-do-you-want-to-collect-from",
+          name: "which-companies-house-collection-office-do-you-want-to-collect-from",
+          fieldset: {
+            legend: {
+              text: "Which Companies House office do you want to collect from?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--xl"
+            }
+          },
+          hint: {
+           text: "Opening hours are between 9am to 5pm (Monday to Friday)."
+          },
+          items: [
+            {
+              value: "belfast",
+              text: "Belfast"
+            },
+            {
+              value: "cardiff",
+              text: "Cardiff"
+            },
+            {
+              value: "edinburgh",
+              text: "Edinburgh"
+            },
+            {
+              value: "london",
+              text: "London"
+            }
+          ]
+        }) }}
 
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="full-name">
-        Full name of person collecting certificate
-      </label>
-      <input class="govuk-input" id="full-name" name="full-name" type="text" autocomplete="name" spellcheck="false">
+        {{ govukButton({
+          text: "Continue",
+          href: "email"
+        }) }}
+      </form>
     </div>
-
-    {{ govukRadios({
-      idPrefix: "collection",
-      name: "collection",
-      fieldset: {
-        legend: {
-          text: "Where do you want to collect your certificate from?",
-          isPageHeading: true,
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      hint: {
-        text: "You’ll need to prove your identity when you collect the certificate. Opening hours are between 9am to 5pm (Monday to Friday)."
-      },
-      items: [
-        {
-          value: "cardiff-office",
-          text: "Cardiff",
-          label: {
-            classes: "govuk-label--s"
-          }
-        },
-        {
-          value: "london-office",
-          text: "London",
-          label: {
-            classes: "govuk-label--s"
-          }
-        },
-        {
-          value: "belfast-office",
-          text: "Belfast",
-          label: {
-            classes: "govuk-label--s"
-          }
-        },
-        {
-          value: "edinburgh-office",
-          text: "Edinburgh",
-          label: {
-            classes: "govuk-label--s"
-          }
-        }
-      ]
-
-    }) }}
-
-    {{ govukButton({
-         text: "Continue",
-         href: "email"
-    }) }}
   </div>
-</div>
 {% endblock %}
