@@ -83,7 +83,7 @@ router.post('/order-details', function(req, res) {
 	}
 	else
 	{
-		res.redirect('telephone-number')
+		res.redirect('check-details')
 	}
 })
 
