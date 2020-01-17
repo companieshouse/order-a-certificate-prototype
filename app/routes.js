@@ -75,7 +75,7 @@ router.post('/collection', function(req, res) {
 router.post('/order-details', function(req, res) {
     var errors = [];
 	if(req.session.data['full-name'] == ""){
-		errors.push({text: "Full name is required", href: "#full-name-error"});
+		errors.push({text: "Enter your full name", href: "#full-name-error"});
 		res.render('order-details', {
         	errorName: true,
         	errorList: errors
@@ -90,7 +90,7 @@ router.post('/order-details', function(req, res) {
 router.post('/telephone-number', function(req, res) {
     var errors = [];
 	if(req.session.data['telephone-number'] == ""){
-		errors.push({text: "Telephone number is required", href: "#telephone-number-error"});
+		errors.push({text: "Enter a UK telephone number", href: "#telephone-number-error"});
 		res.render('telephone-number', {
         	errorTelephoneNumber: true,
         	errorList: errors

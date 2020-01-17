@@ -22,7 +22,6 @@
     <div class="govuk-grid-column-two-thirds">
       <form action="/order-details" method="post">
             
-
       {% if errorName  == true %}
          {{ govukErrorSummary({
               titleText: "There is a problem",
@@ -36,7 +35,7 @@
           id: "full-name",
           name: "full-name",
           errorMessage: {
-              text: "Full name is required"
+              text: "Enter your full name"
           },
           autocomplete: "name",
           attributes: {
