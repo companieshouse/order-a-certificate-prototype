@@ -35,7 +35,7 @@ router.post('/CHS-signin', function(req, res) {
 	}
 	else
 	{
-		res.redirect('good-standing')
+		res.redirect('order-details')
 	}
 })
 
@@ -65,7 +65,7 @@ router.post('/collection', function(req, res) {
 	}
 	else
 	{
-		res.redirect('order-details')	
+		res.redirect('check-details')	
 	}
 })
 
@@ -80,7 +80,7 @@ router.post('/order-details', function(req, res) {
 	}
 	else
 	{
-		res.redirect('check-details')
+		res.redirect('good-standing')
 	}
 })
 
