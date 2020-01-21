@@ -18,12 +18,12 @@ router.post('/CHS-signin', function(req, res) {
 	
 	if(req.session.data['email'] == ""){
 		emailHasError = true;
-		errors.push({text: "Email address is required", href: "#email-error"});
+		errors.push({text: "Enter your email address", href: "#email-error"});
 	}
 	
 	if(req.session.data['password'] == ""){
         passwordHasError = true;
-        errors.push({text: "Password is required", href: "#password-error"});
+        errors.push({text: "Enter your password", href: "#password-error"});
 	}
 
 	if(emailHasError || passwordHasError){
@@ -39,11 +39,10 @@ router.post('/CHS-signin', function(req, res) {
 	}
 })
 
-
 router.post('/good-standing', function(req, res) {
 	var errors = [];
 	if(typeof req.session.data['do-you-want-good-standing-information'] == 'undefined'){
-		errors.push({text: "Select yes if you want Good Standing information on the certificate", href: "#do-you-want-good-standing-information-error"});
+		errors.push({text: "Select yes if you want good standing information on the certificate", href: "#do-you-want-good-standing-information-error"});
 		res.render('good-standing', {
         	error: true,
         	errorList: errors
@@ -54,8 +53,6 @@ router.post('/good-standing', function(req, res) {
 		res.redirect('collection')
 	}
 })
-
-
 
 router.post('/collection', function(req, res) {
 	var errors = [];

@@ -28,17 +28,18 @@
           }) }}
 
           {{ govukRadios({
+            classes: "govuk-radios--inline",
             idPrefix: "do-you-want-good-standing-information",
             name: "do-you-want-good-standing-information",
             fieldset: {
               legend: {
-                text: "Do you want Good Standing information on the certificate?",
+                text: "Do you want good standing information on the certificate?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
               }
             },
             errorMessage: {
-              text: "Select yes if you want Good Standing information on the certificate"
+              text: "Select yes if you want good standing information on the certificate"
             },
             items: [
               {
@@ -53,11 +54,12 @@
           }) }}
         {% else %}
           {{ govukRadios({
+              classes: "govuk-radios--inline",
             idPrefix: "do-you-want-good-standing-information",
             name: "do-you-want-good-standing-information",
             fieldset: {
               legend: {
-                text: "Do you want Good Standing information on the certificate?",
+                text: "Do you want good standing information on the certificate?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
               }
