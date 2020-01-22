@@ -70,11 +70,25 @@ router.post('/collection', function(req, res) {
 })
 
 router.post('/order-details', function(req, res) {
-    var errors = [];
-	if(req.session.data['full-name'] == ""){
-		errors.push({text: "Enter your full name", href: "#full-name-error"});
+
+	var errors = [];
+    var firstNameHasError = false;
+    var lastNameHasError = false;
+	
+	if(req.session.data['first-name'] == ""){
+		firstNameHasError = true;
+		errors.push({text: "Enter your first name", href: "#first-name-error"});
+	}
+	
+	if(req.session.data['last-name'] == ""){
+        lastNameHasError = true;
+        errors.push({text: "Enter your last name", href: "#last-name-error"});
+	}
+
+	if(firstNameHasError || lastNameHasError){
 		res.render('order-details', {
-        	errorName: true,
+        	errorFirstName: firstNameHasError,
+        	errorLastName: lastNameHasError,
         	errorList: errors
       	})
 	}

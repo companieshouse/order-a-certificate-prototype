@@ -17,42 +17,59 @@
 {% endblock %}
 
 {% block content %}
-<h1 class="govuk-heading-xl">Enter your name</h1>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Enter your name</h1>
+      <span id="company-number-hint" class="govuk-hint">This is the name of the person making the order
+  </span>
       <form action="/order-details" method="post">
-            
-      {% if errorName  == true %}
-         {{ govukErrorSummary({
+
+        {% if errorFirstName  == true or errorLastName == true %}
+            {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
             }) }}
+          {% endif %}
 
+        {% if errorFirstName  == true %}
+          {{ govukInput({
+            label: {
+            text: "First name"
+          },
+          id: "first-name",
+          name: "first-name",
+          errorMessage: {
+            text: "Enter your first name"
+          }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+            text: "First name"
+          },
+          id: "first-name",
+          name: "first-name"
+          }) }}
+        {% endif %}
+        
+      {% if errorLastName  == true %}
         {{ govukInput({
           label: {
-            text: "This is the name of the person making the order"
-          },
-          id: "full-name",
-          name: "full-name",
-          errorMessage: {
-              text: "Enter your full name"
-          },
-          autocomplete: "name",
-          attributes: {
-            spellcheck: "false"
+          text: "Last name"
+        },
+        id: "last-name",
+        name: "last-name",
+        errorMessage: {
+            text: "Enter your last name"
           }
         }) }}
       {% else %}
         {{ govukInput({
           label: {
-            text: "This is the name of the person making the order"
-          },
-          id: "full-name",
-          name: "full-name",
-          autocomplete: "name",
-          attributes: {
-            spellcheck: "false"
-          }
+          text: "Last name"
+        },
+        id: "last-name",
+        name: "last-name"
         }) }}
       {% endif %}
      
