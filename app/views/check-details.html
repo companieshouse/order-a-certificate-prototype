@@ -20,113 +20,110 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-xl">Check your order details</h1>
-      <h2 class="govuk-heading-m">Contact details</h2>
+        <form action="/payment-review" method="post">
 
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Name"
-            },
-            value: {
-              text: "Hannah Thomas"
-            },
-            actions: {
-              items: [
+            <h1 class="govuk-heading-xl">Check your order details</h1>
+            <h2 class="govuk-heading-m">Contact details</h2>
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
                 {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "name"
+                  key: {
+                    text: "Name"
+                  },
+                  value: {
+                    text: "Hannah Thomas"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "name"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Email"
+                  },
+                  value: {
+                    html: '<p class="govuk-body">h.thomas@example.com</p>'
+                  }
                 }
               ]
-            }
-          },
-          {
-            key: {
-              text: "Email"
-            },
-            value: {
-              html: '<p class="govuk-body">h.thomas@example.com</p>'
-            }
-          }
-        ]
-      }) }}
+            }) }}
 
-      <h2 class="govuk-heading-m">Order details</h2>
+            <h2 class="govuk-heading-m">Order details</h2>
 
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Certificate type"
-            },
-            value: {
-              text: "Incorporation"
-            }
-          },
-           {
-            key: {
-              text: "Good standing"
-            },
-            value: {
-              text: "Yes"
-            },
-            actions: {
-              items: [
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
                 {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "good standing"
+                  key: {
+                    text: "Certificate type"
+                  },
+                  value: {
+                    text: "Incorporation"
+                  }
+                },
+                 {
+                  key: {
+                    text: "Good standing"
+                  },
+                  value: {
+                    text: "Yes"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "good standing"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Delivery type"
+                  },
+                  value: {
+                    text: "Standard collection (4 days)"
+                  }
+                },
+                {
+                  key: {
+                    text: "Collection office"
+                  },
+                  value: {
+                    text: "London"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "collection office"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Fee"
+                  },
+                  value: {
+                    text: "£15"
+                  }
                 }
               ]
-            }
-          },
-          {
-            key: {
-              text: "Delivery type"
-            },
-            value: {
-              text: "Standard collection (4 days)"
-            }
-          },
-          {
-            key: {
-              text: "Collection office"
-            },
-            value: {
-              text: "London"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "collection office"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Fee"
-            },
-            value: {
-              text: "£15"
-            }
-          }
-        ]
-      }) }}
-
-      <form action="/form-handler" method="post" novalidate>
-
-        <input type="hidden" name="answers-checked" value="true">
+            }) }}
 
         {{ govukButton({
-          text: "Continue to payment",
-          href:"https://products.payments.service.gov.uk/pay/b872ac7b77c34bab91dd65bfa349f46a"
+          text: "Continue"
         }) }}
 
       </form>
