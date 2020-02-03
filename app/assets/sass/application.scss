@@ -12,41 +12,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
-
 // Components that aren't in Frontend
 @import "components/cookie-banner";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
-
-
-$govuk-footer-background: $govuk-canvas-background-colour;
-  $govuk-footer-border: $govuk-border-colour;
-  // This variable can be removed entirely once the legacy palette goes away,
-  // as it'll just be the same as $govuk-footer-border.
-  $govuk-footer-border-top: $govuk-border-colour;
-  $govuk-footer-text: $govuk-text-colour;
-  $govuk-footer-link: $govuk-footer-text;
-  $govuk-footer-link-hover: false;
-
-  @if ($govuk-use-legacy-palette) {
-    // sass-lint:disable no-color-literals
-    $govuk-footer-border-top: #a1acb2;
-    $govuk-footer-border: govuk-colour("grey-2");
-    $govuk-footer-text: #454a4c;
-    $govuk-footer-link: $govuk-footer-text;
-
-    // Only used with the legacy palette
-    $govuk-footer-link-hover: #171819;
-  }
-
-
-
-.govuk-footer_ch {
-    @include govuk-font($size: 16);
-    @include govuk-responsive-padding(5, "top");
-    @include govuk-responsive-padding(5, "bottom");
-
-    border-top: 1px solid $govuk-footer-border-top;
-    color: $govuk-footer-text;
-    background: $govuk-footer-background;
-}
