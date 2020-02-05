@@ -130,10 +130,23 @@ router.post('/delivery-type', function(req, res) {
 		}
 		else
 		{
-			res.redirect('name-and-address')
+			res.redirect('delivery-address')
 		}
 	}
 })
-
+router.post('/delivery-address', function(req, res) {
+    var errors = [];
+	if(req.session.data['delivery-address'] == ""){
+		errors.push({text: "Enter delivery address", href: "#delivery-address-error"});
+		res.render('delivery-address', {
+        	errorTelephoneNumber: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('check-details')
+	}
+})
 
 module.exports = router
