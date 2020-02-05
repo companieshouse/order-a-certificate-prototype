@@ -126,11 +126,11 @@ router.post('/delivery-type', function(req, res) {
 	{
 		if(req.session.data['delivery-type'] == "collection"){
 
-			res.redirect('name-and-address')
+			res.redirect('collection')
 		}
 		else
 		{
-			res.redirect('collection')
+			res.redirect('name-and-address')
 		}
 	}
 })
