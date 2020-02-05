@@ -50,7 +50,7 @@ router.post('/good-standing', function(req, res) {
 	}
 	else
 	{
-		res.redirect('collection')
+		res.redirect('delivery-type')
 	}
 })
 
@@ -110,6 +110,28 @@ router.post('/telephone-number', function(req, res) {
 	else
 	{
 		res.redirect('reference')
+	}
+})
+
+router.post('/delivery-type', function(req, res) {
+	var errors = [];
+	if(typeof req.session.data['delivery-type'] == 'undefined'){
+		errors.push({text: "Select .....", href: "#delivery-type-error"});
+		res.render('delivery-type', {
+        	error: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		if(req.session.data['delivery-type'] == "collection"){
+
+			res.redirect('name-and-address')
+		}
+		else
+		{
+			res.redirect('collection')
+		}
 	}
 })
 
