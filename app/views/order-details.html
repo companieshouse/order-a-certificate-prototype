@@ -6,7 +6,7 @@
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
 {% block pageTitle %}
-  Tell us about order details
+  Tell us your name
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">Enter the name of the person making the order</h1>
+      <h1 class="govuk-heading-xl">What is your name?</h1>
       <form action="/order-details" method="post">
 
         {% if errorFirstName  == true or errorLastName == true %}

@@ -30,6 +30,19 @@
         }
       }) %}
 
+      {% if errorAddressLineOne  == true %}
+        {{ govukInput({
+          label: {
+            html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+          },
+          id: "address-line-1",
+          name: "address-line-1",
+          autocomplete: "address-line1",
+          errorMessage: {
+            text: "Enter your building and street"
+          }
+        }) }}
+        {% else %}
         {{ govukInput({
           label: {
             html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
@@ -38,6 +51,8 @@
           name: "address-line-1",
           autocomplete: "address-line1"
         }) }}
+        {% endif %}
+
 
         {{ govukInput({
           label: {
@@ -48,6 +63,20 @@
           autocomplete: "address-line2"
         }) }}
 
+        {% if errorTownOrCity  == true %}
+        {{ govukInput({
+          label: {
+            text: "Town or city"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "address-town",
+          name: "address-town",
+          autocomplete: "address-level2",
+          errorMessage: {
+            text: "Enter your town or city"
+          }
+        }) }}
+        {% else %}
         {{ govukInput({
           label: {
             text: "Town or city"
@@ -58,13 +87,18 @@
           autocomplete: "address-level2"
         }) }}
 
+        {% if errorCounty  == true %}
+
         {{ govukInput({
           label: {
             text: "County"
           },
           classes: "govuk-!-width-two-thirds",
           id: "address-county",
-          name: "address-county"
+          name: "address-county",
+          errorMessage: {
+            text: "Enter your town or city"
+          }
         }) }}
 
         {{ govukInput({
@@ -78,8 +112,6 @@
         }) }}
 
       {% endcall %}
-
-    
      
       {{ govukButton({
         text: "Continue"
