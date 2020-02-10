@@ -19,9 +19,8 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">What is your name?</h1>
       <form action="/order-details" method="post">
-
+        <h1 class="govuk-heading-xl">What is your name?</h1>
         {% if errorFirstName  == true or errorLastName == true %}
             {{ govukErrorSummary({
               titleText: "There is a problem",
@@ -49,31 +48,31 @@
           name: "first-name"
           }) }}
         {% endif %}
-        
-      {% if errorLastName  == true %}
-        {{ govukInput({
-          label: {
-          text: "Last name"
-        },
-        id: "last-name",
-        name: "last-name",
-        errorMessage: {
-            text: "Enter your last name"
-          }
-        }) }}
-      {% else %}
-        {{ govukInput({
-          label: {
-          text: "Last name"
-        },
-        id: "last-name",
-        name: "last-name"
-        }) }}
-      {% endif %}
+
+        {% if errorLastName  == true %}
+          {{ govukInput({
+            label: {
+            text: "Last name"
+          },
+          id: "last-name",
+          name: "last-name",
+          errorMessage: {
+              text: "Enter your last name"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+            text: "Last name"
+          },
+          id: "last-name",
+          name: "last-name"
+          }) }}
+        {% endif %}
      
-      {{ govukButton({
-        text: "Continue"
-      }) }}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
     </form>
   </div>
 </div>  

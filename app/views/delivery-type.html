@@ -5,6 +5,8 @@
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 {% block pageTitle %}
   Tell us the delivery type 
@@ -38,7 +40,7 @@
               }
             },
             errorMessage: {
-              text: "Select ........"
+              text: "Select how you would like to receive the certificate"
             },
             items: [
               {
@@ -90,6 +92,7 @@
         {{ govukButton({
           text: "Continue"
         }) }}
+        
       </form>
     </div>
   </div>

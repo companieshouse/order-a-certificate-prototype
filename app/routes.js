@@ -116,7 +116,7 @@ router.post('/telephone-number', function(req, res) {
 router.post('/delivery-type', function(req, res) {
 	var errors = [];
 	if(typeof req.session.data['delivery-type'] == 'undefined'){
-		errors.push({text: "Select .....", href: "#delivery-type-error"});
+		errors.push({text: "Select how you would like to receive the certificate", href: "#delivery-type-error"});
 		res.render('delivery-type', {
         	error: true,
         	errorList: errors
@@ -134,12 +134,41 @@ router.post('/delivery-type', function(req, res) {
 		}
 	}
 })
+
 router.post('/delivery-address', function(req, res) {
-    var errors = [];
-	if(req.session.data['delivery-address'] == ""){
-		errors.push({text: "Enter delivery address", href: "#delivery-address-error"});
+
+	var errors = [];
+    var buildingStreetHasError = false;
+    var townCityHasError = false;
+    var countyHasError = false;
+    var postcodeHasError = false;
+	
+	if(req.session.data['address-line-1'] == ""){
+		buildingStreetHasError = true;
+		errors.push({text: "Enter a building and street", href: "#building-street-error"});
+	}
+	
+	if(req.session.data['address-town'] == ""){
+        townCityHasError = true;
+        errors.push({text: "Enter a town or city", href: "#town-city-error"});
+	}
+
+	if(req.session.data['address-county'] == ""){
+       	countyHasError = true;
+        errors.push({text: "Enter a county", href: "#county-error"});
+	}
+
+	if(req.session.data['address-postcode'] == ""){
+        postcodeHasError = true;
+        errors.push({text: "Enter a postcode", href: "#postcode-error"});
+	}
+
+	if(buildingStreetHasError || townCityHasError || countyHasError || postcodeHasError){
 		res.render('delivery-address', {
-        	errorTelephoneNumber: true,
+        	errorAddressLineOne: buildingStreetHasError,
+        	errorTownCity: townCityHasError,
+        	errorCounty: countyHasError,
+        	errorPostcode: postcodeHasError,
         	errorList: errors
       	})
 	}
