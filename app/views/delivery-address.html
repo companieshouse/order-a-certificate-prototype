@@ -22,7 +22,7 @@
       <form action="/delivery-address" method="post">
         <h1 class="govuk-heading-xl">What is your delivery address?</h1>
 
-        {% if errorAddressLineOne  == true or errorTownCity == true or errorCounty == true or errorPostcode == true %}
+        {% if errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
             {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
@@ -48,10 +48,7 @@
               },
               id: "address-line-2",
               name: "address-line-2",
-              autocomplete: "address-line2",
-              errorMessage: {
-              text: ""
-            }
+              autocomplete: "address-line2"
           }) }}
 
           {% else %}
@@ -98,20 +95,7 @@
               autocomplete: "address-level2"
           }) }}
           {% endif %}
-
-          {% if errorCounty  == true %}
-          {{ govukInput({
-            label: {
-              text: "County"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "address-county",
-            name: "address-county",
-            errorMessage: {
-              text: "Enter a county"
-              }
-          }) }}
-          {% else %}
+          
           {{ govukInput({
             label: {
               text: "County"
@@ -120,7 +104,7 @@
             id: "address-county",
             name: "address-county"
           }) }}
-          {% endif %}
+          
 
           {% if errorPostcode  == true %}
           {{ govukInput({
