@@ -142,7 +142,6 @@ router.post('/delivery-address', function(req, res) {
     var firstNameHasError = false;
     var lastNameHasError = false;
     var townCityHasError = false;
-    var countyHasError = false;
     var postcodeHasError = false;
 
     if(req.session.data['first-name'] == ""){

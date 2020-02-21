@@ -1,10 +1,6 @@
 
 {% extends "layout.html" %}
 
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-
 {% block pageTitle %}
   Tell us about delivery details
 {% endblock %}
@@ -177,6 +173,15 @@
             autocomplete: "postal-code"
           }) }}
           {% endif %}
+
+          {{ govukInput({
+            label: {
+              text: "Country (optional)"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "address-country",
+            name: "address-country"
+          }) }}
 
         {{ govukButton({
           text: "Continue"
