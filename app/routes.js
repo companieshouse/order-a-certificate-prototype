@@ -139,9 +139,21 @@ router.post('/delivery-address', function(req, res) {
 
 	var errors = [];
     var buildingStreetHasError = false;
+    var firstNameHasError = false;
+    var lastNameHasError = false;
     var townCityHasError = false;
     var countyHasError = false;
     var postcodeHasError = false;
+
+    if(req.session.data['first-name'] == ""){
+		firstNameHasError = true;
+		errors.push({text: "Enter your first name", href: "#first-name-error"});
+	}
+	
+	if(req.session.data['last-name'] == ""){
+        lastNameHasError = true;
+        errors.push({text: "Enter your last name", href: "#last-name-error"});
+	}
 	
 	if(req.session.data['address-line-1'] == ""){
 		buildingStreetHasError = true;
@@ -153,21 +165,17 @@ router.post('/delivery-address', function(req, res) {
         errors.push({text: "Enter a town or city", href: "#town-city-error"});
 	}
 
-	if(req.session.data['address-county'] == ""){
-       	countyHasError = true;
-        errors.push({text: "Enter a county", href: "#county-error"});
-	}
-
 	if(req.session.data['address-postcode'] == ""){
         postcodeHasError = true;
         errors.push({text: "Enter a postcode", href: "#postcode-error"});
 	}
 
-	if(buildingStreetHasError || townCityHasError || countyHasError || postcodeHasError){
+	if(buildingStreetHasError || townCityHasError || postcodeHasError){
 		res.render('delivery-address', {
+			errorFirstName: firstNameHasError,
+        	errorLastName: lastNameHasError,
         	errorAddressLineOne: buildingStreetHasError,
         	errorTownCity: townCityHasError,
-        	errorCounty: countyHasError,
         	errorPostcode: postcodeHasError,
         	errorList: errors
       	})
