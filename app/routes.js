@@ -139,20 +139,8 @@ router.post('/delivery-address', function(req, res) {
 
 	var errors = [];
     var buildingStreetHasError = false;
-    var firstNameHasError = false;
-    var lastNameHasError = false;
     var townCityHasError = false;
     var postcodeHasError = false;
-
-    if(req.session.data['first-name'] == ""){
-		firstNameHasError = true;
-		errors.push({text: "Enter your first name", href: "#first-name-error"});
-	}
-	
-	if(req.session.data['last-name'] == ""){
-        lastNameHasError = true;
-        errors.push({text: "Enter your last name", href: "#last-name-error"});
-	}
 	
 	if(req.session.data['address-line-1'] == ""){
 		buildingStreetHasError = true;
@@ -171,8 +159,6 @@ router.post('/delivery-address', function(req, res) {
 
 	if(buildingStreetHasError || townCityHasError || postcodeHasError){
 		res.render('delivery-address', {
-			errorFirstName: firstNameHasError,
-        	errorLastName: lastNameHasError,
         	errorAddressLineOne: buildingStreetHasError,
         	errorTownCity: townCityHasError,
         	errorPostcode: postcodeHasError,
