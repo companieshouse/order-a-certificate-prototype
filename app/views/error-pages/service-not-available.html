@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sorry, there is a problem with this service
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Sorry, there is a problem with this service.</h1>
+        <p class="govuk-body">
+          Please try again later.
+        </p>
+        <p class="govuk-body">
+          We have not saved your answers. When the service is available you will have to start again.
+        </p>
+        <p class="govuk-body">
+          Contact Companies House if you need to speak to someone about your certificates order.
+        </p>
+
+        <h2 class="govuk-heading-m">By phone</h2>
+
+        <ul class="govuk-list">
+          <li>
+            Monday to Friday 8.30am to 6pm
+          </li>
+          <li>
+            Phone: +44 (0)303 1234 500
+          </li>
+          <li>
+            Minicom: 02920 381245
+          </li>
+          <li>
+            <a class="govuk-link" href="https://www.gov.uk/call-charges">Find out about call charges</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+{% endblock %}
