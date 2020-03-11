@@ -18,7 +18,7 @@
       <form action="/delivery-address" method="post">
         <h1 class="govuk-heading-xl">What is your delivery address?</h1>
 
-        {% if errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
+        {% if errorFullName == true or errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
 
           {{ govukErrorSummary({
               titleText: "There is a problem",
@@ -26,120 +26,150 @@
             }) }}
           {% endif %}
 
-        {% if errorAddressLineOne  == true %}
-          {{ govukInput({
-            label: {
-              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
-            },
-            id: "address-line-1",
-            name: "address-line-1",
-            autocomplete: "address-line1",
-            errorMessage: {
-              text: "Enter a building and street"
-            }
-          }) }}
-
-          {{ govukInput({
-              label: {
-                html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
-              },
-              id: "address-line-2",
-              name: "address-line-2",
-              autocomplete: "address-line2"
-          }) }}
-
-          {% else %}
-          {{ govukInput({
-            label: {
-              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
-            },
-            id: "address-line-1",
-            name: "address-line-1",
-            autocomplete: "address-line1"
-          }) }}
-
-          {{ govukInput({
-              label: {
-                html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
-              },
-              id: "address-line-2",
-              name: "address-line-2",
-              autocomplete: "address-line2"
-          }) }}
-          {% endif %}
-
-          {% if errorTownCity  == true %}
+          {% if errorFullName  == true %}
             {{ govukInput({
               label: {
-                text: "Town or city"
+                text: "Full name"
               },
-              classes: "govuk-!-width-two-thirds",
-              id: "address-town",
-              name: "address-town",
-              autocomplete: "address-level2",
+              id: "full-name",
+              name: "full-name",
+              autocomplete: "name",
               errorMessage: {
-              text: "Enter a town or city"
+                text: "Enter full name"
+              },
+              attributes: {
+                spellcheck: "false"
               }
-          }) }}
+              
+            }) }}
           {% else %}
             {{ govukInput({
-              label: {
-                text: "Town or city"
-              },
-              classes: "govuk-!-width-two-thirds",
-              id: "address-town",
-              name: "address-town",
-              autocomplete: "address-level2"
-          }) }}
-          {% endif %}
-          
-          {{ govukInput({
             label: {
-              text: "County"
+              text: "Full name"
             },
-            classes: "govuk-!-width-two-thirds",
-            id: "address-county",
-            name: "address-county"
-          }) }}
-          
-
-          {% if errorPostcode  == true %}
-          {{ govukInput({
-            label: {
-              text: "Postcode"
-            },
-            classes: "govuk-input--width-10",
-            id: "address-postcode",
-            name: "address-postcode",
-            autocomplete: "postal-code",
-            errorMessage: {
-              text: "Enter a postcode"
+            id: "full-name",
+            name: "full-name",
+            autocomplete: "name",
+            attributes: {
+              spellcheck: "false"
             }
           }) }}
-          {% else %}
-          {{ govukInput({
-            label: {
-              text: "Postcode"
-            },
-            classes: "govuk-input--width-10",
-            id: "address-postcode",
-            name: "address-postcode",
-            autocomplete: "postal-code"
-          }) }}
           {% endif %}
 
-          {{ govukInput({
-            label: {
-              text: "Country"
-            },
-            classes: "govuk-!-width-two-thirds",
-            id: "address-country",
-            name: "address-country"
-          }) }}
+          {% if errorAddressLineOne  == true %}
+            {{ govukInput({
+              label: {
+                html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+              },
+              id: "address-line-1",
+              name: "address-line-1",
+              autocomplete: "address-line1",
+              errorMessage: {
+                text: "Enter a building and street"
+              }
+            }) }}
 
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+            {{ govukInput({
+                label: {
+                  html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+                },
+                id: "address-line-2",
+                name: "address-line-2",
+                autocomplete: "address-line2"
+            }) }}
+
+            {% else %}
+            {{ govukInput({
+              label: {
+                html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+              },
+              id: "address-line-1",
+              name: "address-line-1",
+              autocomplete: "address-line1"
+            }) }}
+
+            {{ govukInput({
+                label: {
+                  html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+                },
+                id: "address-line-2",
+                name: "address-line-2",
+                autocomplete: "address-line2"
+            }) }}
+            {% endif %}
+
+            {% if errorTownCity  == true %}
+              {{ govukInput({
+                label: {
+                  text: "Town or city"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "address-town",
+                name: "address-town",
+                autocomplete: "address-level2",
+                errorMessage: {
+                text: "Enter a town or city"
+                }
+            }) }}
+            {% else %}
+              {{ govukInput({
+                label: {
+                  text: "Town or city"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "address-town",
+                name: "address-town",
+                autocomplete: "address-level2"
+            }) }}
+            {% endif %}
+            
+            {{ govukInput({
+              label: {
+                text: "County"
+              },
+              classes: "govuk-!-width-two-thirds",
+              id: "address-county",
+              name: "address-county"
+            }) }}
+            
+
+            {% if errorPostcode  == true %}
+            {{ govukInput({
+              label: {
+                text: "Postcode"
+              },
+              classes: "govuk-input--width-10",
+              id: "address-postcode",
+              name: "address-postcode",
+              autocomplete: "postal-code",
+              errorMessage: {
+                text: "Enter a postcode"
+              }
+            }) }}
+            {% else %}
+            {{ govukInput({
+              label: {
+                text: "Postcode"
+              },
+              classes: "govuk-input--width-10",
+              id: "address-postcode",
+              name: "address-postcode",
+              autocomplete: "postal-code"
+            }) }}
+            {% endif %}
+
+            {{ govukInput({
+              label: {
+                text: "Country"
+              },
+              classes: "govuk-!-width-two-thirds",
+              id: "address-country",
+              name: "address-country"
+            }) }}
+
+          {{ govukButton({
+            text: "Continue"
+          }) }}
 
     </form>
   </div>

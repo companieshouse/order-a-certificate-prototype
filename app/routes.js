@@ -141,6 +141,12 @@ router.post('/delivery-address', function(req, res) {
     var buildingStreetHasError = false;
     var townCityHasError = false;
     var postcodeHasError = false;
+    var fullNameError = false;
+
+    if(req.session.data['full-name'] == ""){
+		fullNameHasError = true;
+		errors.push({text: "Enter a full name", href: "#full-name-error"});
+	}
 	
 	if(req.session.data['address-line-1'] == ""){
 		buildingStreetHasError = true;
@@ -157,8 +163,9 @@ router.post('/delivery-address', function(req, res) {
         errors.push({text: "Enter a postcode", href: "#postcode-error"});
 	}
 
-	if(buildingStreetHasError || townCityHasError || postcodeHasError){
+	if(fullNameHasError || buildingStreetHasError || townCityHasError || postcodeHasError){
 		res.render('delivery-address', {
+			errorFullName:fullNameHasError,
         	errorAddressLineOne: buildingStreetHasError,
         	errorTownCity: townCityHasError,
         	errorPostcode: postcodeHasError,
