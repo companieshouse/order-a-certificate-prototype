@@ -141,7 +141,7 @@ router.post('/delivery-address', function(req, res) {
     var buildingStreetHasError = false;
     var townCityHasError = false;
     var postcodeHasError = false;
-    var fullNameError = false;
+    var fullNameHasError = false;
 
     if(req.session.data['full-name'] == ""){
 		fullNameHasError = true;

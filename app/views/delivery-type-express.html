@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+
+{% block pageTitle %}
+  Tell us the delivery type 
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "good-standing"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/delivery-type" method="post">
+        {% if error  == true %}
+          {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "delivery-type",
+            name: "delivery-type",
+            fieldset: {
+              legend: {
+                text: "How would you like to receive the certificate for Filings LTD?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            errorMessage: {
+              text: "Select how you would like to receive the certificate"
+            },
+            items: [
+              {
+                value: "collection",
+                text: "Collect from a Companies House office",
+                label: {
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "including Belfast, Cardiff, Edinburgh and London"
+                }
+              },
+              {
+                value: "post",
+                text: "Post"
+              }
+            ]
+          }) }}
+        {% else %}
+          {{ govukRadios({
+            idPrefix: "delivery-type",
+            name: "delivery-type",
+            fieldset: {
+              legend: {
+                text: "How would you like to receive the certificate for Filings LTD?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            items: [
+              {
+                value: "collection",
+                text: "Collect from a Companies House office",
+                label: {
+                  classes: "govuk-label--s"
+                },
+                hint: {
+                  text: "including Belfast, Cardiff, Edinburgh and London"
+                }
+              },
+              {
+                value: "post",
+                text: "Post"
+              }
+            ]
+          }) }}
+        {% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+        
+      </form>
+    </div>
+  </div>
+{% endblock %}

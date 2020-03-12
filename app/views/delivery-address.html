@@ -16,18 +16,25 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form action="/delivery-address" method="post">
-        <h1 class="govuk-heading-xl">What is your delivery address?</h1>
+        {% call govukFieldset({
+          legend: {
+            text: "What is your delivery address?",
+            classes: "govuk-fieldset__legend--xl",
+            isPageHeading: true
+          }
+        }) %}
+
 
         {% if errorFullName == true or errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
 
           {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
-            }) }}
-          {% endif %}
+          }) }}
+        {% endif %}
 
-          {% if errorFullName  == true %}
-            {{ govukInput({
+        {% if errorFullName  == true %}
+          {{ govukInput({
               label: {
                 text: "Full name"
               },
@@ -41,9 +48,9 @@
                 spellcheck: "false"
               }
               
-            }) }}
-          {% else %}
-            {{ govukInput({
+          }) }}
+        {% else %}
+          {{ govukInput({
             label: {
               text: "Full name"
             },
@@ -54,9 +61,9 @@
               spellcheck: "false"
             }
           }) }}
-          {% endif %}
+        {% endif %}
 
-          {% if errorAddressLineOne  == true %}
+        {% if errorAddressLineOne  == true %}
             {{ govukInput({
               label: {
                 html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
@@ -167,10 +174,12 @@
               name: "address-country"
             }) }}
 
+
           {{ govukButton({
             text: "Continue"
           }) }}
 
+    {% endcall %}
     </form>
   </div>
 </div>  
