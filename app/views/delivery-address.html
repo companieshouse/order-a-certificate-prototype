@@ -24,7 +24,6 @@
           }
         }) %}
 
-
         {% if errorFullName == true or errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
 
           {{ govukErrorSummary({
@@ -138,21 +137,20 @@
               id: "address-county",
               name: "address-county"
             }) }}
-            
 
             {% if errorPostcode  == true %}
-            {{ govukInput({
-              label: {
-                text: "Postcode"
-              },
-              classes: "govuk-input--width-10",
-              id: "address-postcode",
-              name: "address-postcode",
-              autocomplete: "postal-code",
-              errorMessage: {
-                text: "Enter a postcode"
-              }
-            }) }}
+              {{ govukInput({
+                label: {
+                  text: "Postcode"
+                },
+                classes: "govuk-input--width-10",
+                id: "address-postcode",
+                name: "address-postcode",
+                autocomplete: "postal-code",
+                errorMessage: {
+                  text: "Enter a postcode"
+                }
+              }) }}
             {% else %}
             {{ govukInput({
               label: {
@@ -165,15 +163,14 @@
             }) }}
             {% endif %}
 
-            {{ govukInput({
-              label: {
-                text: "Country"
-              },
-              classes: "govuk-!-width-two-thirds",
-              id: "address-country",
-              name: "address-country"
-            }) }}
-
+              {{ govukInput({
+                label: {
+                  text: "Country"
+                },
+                classes: "govuk-!-width-two-thirds",
+                id: "address-country",
+                name: "address-country"
+              }) }}
 
           {{ govukButton({
             text: "Continue"
