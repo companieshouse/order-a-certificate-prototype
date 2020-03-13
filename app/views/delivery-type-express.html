@@ -30,60 +30,46 @@
           }) }}
 
           {{ govukRadios({
-            idPrefix: "delivery-type",
-            name: "delivery-type",
+            idPrefix: "email-of-certificate",
+            name: "email-of-certificate-",
             fieldset: {
               legend: {
-                text: "How would you like to receive the certificate for Filings LTD?",
+                text: "Would you like a copy of the certificate by email?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
               }
             },
-            errorMessage: {
-              text: "Select how you would like to receive the certificate"
-            },
             items: [
               {
-                value: "collection",
-                text: "Collect from a Companies House office",
-                label: {
-                  classes: "govuk-label--s"
-                },
-                hint: {
-                  text: "including Belfast, Cardiff, Edinburgh and London"
-                }
+                value: "yes",
+                text: "Yes"
               },
               {
-                value: "post",
-                text: "Post"
+                value: "no",
+                text: "No"
               }
             ]
           }) }}
         {% else %}
+
           {{ govukRadios({
-            idPrefix: "delivery-type",
-            name: "delivery-type",
+            idPrefix: "email-of-certificate",
+            name: "email-of-certificate-",
             fieldset: {
               legend: {
-                text: "How would you like to receive the certificate for Filings LTD?",
+                text: "Would you like a copy of the certificate by email?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
               }
             },
             items: [
               {
-                value: "collection",
-                text: "Collect from a Companies House office",
-                label: {
-                  classes: "govuk-label--s"
-                },
-                hint: {
-                  text: "including Belfast, Cardiff, Edinburgh and London"
-                }
+                value: "yes",
+                text: "Yes"
               },
               {
-                value: "post",
-                text: "Post"
+                value: "no",
+                text: "No"
               }
             ]
           }) }}
