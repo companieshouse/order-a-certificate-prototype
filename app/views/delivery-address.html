@@ -18,47 +18,17 @@
       <form action="/delivery-address" method="post">
         {% call govukFieldset({
           legend: {
-            text: "What is your delivery address?",
+            text: "What is the delivery address?",
             classes: "govuk-fieldset__legend--xl",
             isPageHeading: true
           }
         }) %}
 
-        {% if errorFullName == true or errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
+        {% if errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
 
           {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
-          }) }}
-        {% endif %}
-
-        {% if errorFullName  == true %}
-          {{ govukInput({
-              label: {
-                text: "Full name"
-              },
-              id: "full-name",
-              name: "full-name",
-              autocomplete: "name",
-              errorMessage: {
-                text: "Enter a full name"
-              },
-              attributes: {
-                spellcheck: "false"
-              }
-              
-          }) }}
-        {% else %}
-          {{ govukInput({
-            label: {
-              text: "Full name"
-            },
-            id: "full-name",
-            name: "full-name",
-            autocomplete: "name",
-            attributes: {
-              spellcheck: "false"
-            }
           }) }}
         {% endif %}
 
