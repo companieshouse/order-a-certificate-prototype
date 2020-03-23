@@ -69,7 +69,7 @@ router.post('/collection', function(req, res) {
 	}
 })
 
-router.post('/order-details', function(req, res) {
+router.post('/order-details-collection', function(req, res) {
 
 	var errors = [];
     var firstNameHasError = false;
@@ -86,7 +86,7 @@ router.post('/order-details', function(req, res) {
 	}
 
 	if(firstNameHasError || lastNameHasError){
-		res.render('order-details', {
+		res.render('order-details-collection', {
         	errorFirstName: firstNameHasError,
         	errorLastName: lastNameHasError,
         	errorList: errors
@@ -94,9 +94,10 @@ router.post('/order-details', function(req, res) {
 	}
 	else
 	{
-		res.redirect('good-standing')
+		res.redirect('collection')
 	}
 })
+
 
 router.post('/telephone-number', function(req, res) {
     var errors = [];
