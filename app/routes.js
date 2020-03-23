@@ -65,7 +65,7 @@ router.post('/collection', function(req, res) {
 	}
 	else
 	{
-		res.redirect('check-details')	
+		res.redirect('check-details-collection')	
 	}
 })
 
