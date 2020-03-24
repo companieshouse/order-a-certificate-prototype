@@ -1,9 +1,6 @@
 
 {% extends "layout.html" %}
 
-{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 {% block pageTitle %}
   Payment review
 {% endblock %}
@@ -21,7 +18,7 @@
       <h1 class="govuk-heading-xl"> Review your order</h1>
 
       {% set paymentLabel %}
-      Incorporation certificate<br/>
+      Company certificate<br/>
       BATTERSEA POWER LIMITED (00345567)
       {% endset %}
       {{ govukTable({

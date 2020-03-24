@@ -1,13 +1,5 @@
 {% extends "layout.html" %}
 
-{% from "govuk/components/panel/macro.njk" import govukPanel %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-{% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
-{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
-
 {% block pageTitle %}
   Tell us the delivery type 
 {% endblock %}
@@ -54,8 +46,8 @@
                 }
               },
               {
-                value: "post",
-                text: "Post"
+                value: "delivery",
+                text: "Delivery"
               }
             ]
           }) }}
@@ -82,8 +74,8 @@
                 }
               },
               {
-                value: "post",
-                text: "Post"
+                value: "delivery",
+                text: "Delivery"
               }
             ]
           }) }}

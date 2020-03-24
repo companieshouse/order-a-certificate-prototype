@@ -208,4 +208,36 @@ router.post('/delivery-address', function(req, res) {
 	}
 })
 
+router.post('/delivery-time-collection', function(req, res) {
+	var errors = [];
+	if(typeof req.session.data['delivery-time-collection'] == 'undefined'){
+		errors.push({text: "Select when you would like the certificate delivered", href: "#delivery-time-collection-error"});
+		res.render('delivery-time-collection', {
+        	error: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+			res.redirect('')
+		
+	}
+})
+
+router.post('/email', function(req, res) {
+	var errors = [];
+	if(typeof req.session.data['email'] == 'undefined'){
+		errors.push({text: "Select yes if you would like a copy of the certificate sent to you by email", href: "#email-error"});
+		res.render('email', {
+        	error: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+			res.redirect('')
+		
+	}
+})
+
 module.exports = router
