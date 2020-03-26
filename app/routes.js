@@ -208,6 +208,15 @@ router.post('/delivery-address', function(req, res) {
 	}
 })
 
+router.get('/check-details-delivery', function (req, res) {
+    res.render('payment-review')
+  });
+router.get('/check-details-collection', function (req, res) {
+    res.render('payment-review')
+  });
+
+
+
 router.post('/delivery-time-collection', function(req, res) {
 	var errors = [];
 	if(typeof req.session.data['delivery-time-collection'] == 'undefined'){
@@ -238,6 +247,19 @@ router.post('/email', function(req, res) {
 			res.redirect('')
 		
 	}
+})
+
+router.post('/payment-review', function(req, res) {
+	var errors = [];
+	var backtopage =[];
+	if(req.session.data['delivery-type'] == "collection"){
+
+			backtopage = res.redirect('order-details-collection');
+		}
+		else
+		{
+			res.redirect('order-details-delivery')
+		}
 })
 
 module.exports = router
