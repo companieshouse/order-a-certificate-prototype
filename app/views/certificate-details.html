@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Certificate details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/certificate-details" method="post">
+
+        {% set directorNameHtml %}
+        {{ govukInput({
+          id: "a-directors-name",
+          name: "a-directors-name",
+          type: "name",
+          classes: "govuk-!-width-one-third",
+          label: {
+            text: "Directors full name"
+          }
+        }) }}
+        {% endset -%}
+
+        {{ govukCheckboxes({
+            idPrefix: "more-info",
+            name: "more-info",
+            fieldset: {
+            legend: {
+            text: "What information would you like on the certificate?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        items: [
+          {
+            value: "good-standing",
+            text: "Good standing"
+          },
+          {
+            value: "a-directors-name",
+            text: "A director"
+          },
+          {
+            value: "directors",
+            text: "All directors"
+          },
+          {
+            value: "directors",
+            text: "Current Directors"
+          },
+          {
+            value: "company-objects",
+            text: "Objects"
+          },
+          {
+            value: "secretaries",
+            text: "Secretaries"
+          },
+          {
+            value: "registered-office",
+            text: "Registered office"
+          }
+        ]
+      }) }}
+
+      {{ govukTextarea({
+        name: "more-detail",
+        id: "more-detail",
+        label: {
+          text: "Extra information"
+        },
+        hint: {
+          text: "Add any details about the extra information you need."
+        }
+      }) }}
+
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
