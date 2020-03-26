@@ -208,13 +208,6 @@ router.post('/delivery-address', function(req, res) {
 	}
 })
 
-router.get('/check-details-delivery', function (req, res) {
-    res.render('payment-review')
-  });
-router.get('/check-details-collection', function (req, res) {
-    res.render('payment-review')
-  });
-
 
 
 router.post('/delivery-time-collection', function(req, res) {
