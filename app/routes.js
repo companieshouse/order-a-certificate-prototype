@@ -208,6 +208,55 @@ router.post('/delivery-address', function(req, res) {
 	}
 })
 
+router.post('/delivery-address-name', function(req, res) {
+
+	var errors = [];
+    var buildingStreetHasError = false;
+    var townCityHasError = false;
+    var postcodeHasError = false;
+	var firstNameHasError = false;
+    var lastNameHasError = false;
+	
+	if(req.session.data['first-name'] == ""){
+		firstNameHasError = true;
+		errors.push({text: "Enter your first name", href: "#first-name-error"});
+	}
+	
+	if(req.session.data['last-name'] == ""){
+        lastNameHasError = true;
+        errors.push({text: "Enter your last name", href: "#last-name-error"});
+	}
+
+	if(req.session.data['address-line-1'] == ""){
+		buildingStreetHasError = true;
+		errors.push({text: "Enter a building and street", href: "#building-street-error"});
+	}
+	
+	if(req.session.data['address-town'] == ""){
+        townCityHasError = true;
+        errors.push({text: "Enter a town or city", href: "#town-city-error"});
+	}
+
+	if(req.session.data['address-postcode'] == ""){
+        postcodeHasError = true;
+        errors.push({text: "Enter a postcode", href: "#postcode-error"});
+	}
+
+	if(buildingStreetHasError || townCityHasError || postcodeHasError){
+		res.render('delivery-address-name', {
+			errorFirstName: firstNameHasError,
+        	errorLastName: lastNameHasError,
+        	errorAddressLineOne: buildingStreetHasError,
+        	errorTownCity: townCityHasError,
+        	errorPostcode: postcodeHasError,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('check-details-delivery')
+	}
+})
 
 
 router.post('/delivery-time-collection', function(req, res) {

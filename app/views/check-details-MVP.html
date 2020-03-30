@@ -1,0 +1,101 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Check order details 
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "collection"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        <form action="/payment-review" method="post">
+
+            <h1 class="govuk-heading-xl">Check your order details</h1>
+
+            <h2 class="govuk-heading-m">Order details</h2>
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
+                {
+                  key: {
+                    text: "Company name"
+                  },
+                  value: {
+                    text: "Stationary LTD"
+                  }
+                },
+                {
+                  key: {
+                    text: "Company number"
+                  },
+                  value: {
+                    text: "027389177"
+                  }
+                },
+                {
+                  key: {
+                    text: "Certificate type"
+                  },
+                  value: {
+                    text: "Incorporation"
+                  }
+                },
+                 {
+                  key: {
+                    text: "Certificate information"
+                  },
+                  value: {
+                    html: "Good standing <br> Directors<br> Company objects<br> Secretaries<br> Registered office address"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "good standing"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Delivery"
+                  },
+                  value: {
+                    text: "Standard delivery (within 4 working days)"
+                  }
+                },
+                {
+                  key: {
+                    text: "Fee"
+                  },
+                  value: {
+                    text: "£15"
+                  }
+                }
+              ]
+            }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          href:"payment-review"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

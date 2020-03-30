@@ -1,12 +1,7 @@
 {% extends "layout.html" %}
 
-{% from "govuk/components/panel/macro.njk" import govukPanel %}
-{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 {% block pageTitle %}
-  Tell us certificate details
+Certificate information
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -19,13 +14,14 @@
 
 {% block content %}
   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
 
     {{ govukCheckboxes({
       idPrefix: "more-info",
       name: "more-info",
       fieldset: {
       legend: {
-      text: "What information would you like on the certificate?",
+      text: "What information would you like to be included on the certificate?",
       isPageHeading: true,
       classes: "govuk-fieldset__legend--xl"
     }
@@ -36,42 +32,46 @@
   items: [
     {
       value: "good-standing",
-      text: "Good standing"
-    },
-    {
-      value: "directors",
-      text: "Directors"
-    },
-    {
-      value: "company-objects",
-      text: "Company objects"
-    },
-    {
-      value: "secretaries",
-      text: "Secretaries"
+      text: "Good standing",
+      hint: {
+        text: "If the company is in a position of good standing then we will provide a Good standing statement on the certificate"
+      }
     },
     {
       value: "registered-office",
-      text: "Registered office"
+      text: "Registered office address",
+      hint: {
+        text: "Current registered office address will be provided. Date not included."
+      }
+    },
+    {
+      value: "directors",
+      text: "Directors",
+      hint: {
+        text: "All current directors names."
+      }
+    },
+    {
+      value: "secretaries",
+      text: "Secretaries",
+      hint: {
+        text: "All current secretaries names."
+      }
+    },
+    {
+      value: "",
+      text: "Objects",
+      hint: {
+        text: "This is the first few sentences of the company objects."
+      }
     }
   ]
-}) }}
-
-{{ govukTextarea({
-  name: "more-detail",
-  id: "more-detail",
-  label: {
-    text: "Extra information"
-  },
-  hint: {
-    text: "Add any details about the extra information you need."
-  }
 }) }}
 
 {{ govukButton({
   text: "Continue",
   href: "delivery-extra-copy"
 }) }}
-
+</div>
 </div>
 {% endblock %}
