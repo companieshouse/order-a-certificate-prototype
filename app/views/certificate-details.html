@@ -33,7 +33,7 @@
             name: "more-info",
             fieldset: {
             legend: {
-            text: "What information would you like on the certificate?",
+            text: "What information would you like to be included on the certificate?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
@@ -44,45 +44,50 @@
         items: [
           {
             value: "good-standing",
-            text: "Good standing"
-          },
-          {
-            value: "a-directors-name",
-            text: "A director"
-          },
-          {
-            value: "directors",
-            text: "All directors"
-          },
-          {
-            value: "directors",
-            text: "Current Directors"
-          },
-          {
-            value: "company-objects",
-            text: "Objects"
-          },
-          {
-            value: "secretaries",
-            text: "Secretaries"
+            text: "Good standing",
+            hint: {
+        text: "A good standing statement, only provided if the company is in good standing."
+      }
           },
           {
             value: "registered-office",
-            text: "Registered office"
+            text: "Registered office address",
+            hint: {
+        text: "The current registered office address, no dates included."
+      }
+          },
+          {
+            value: "directors",
+            text: "Directors",
+            hint: {
+        text: "The names of all current company directors."
+      }
+          },
+          {
+            value: "secretaries",
+            text: "Secretaries",
+            hint: {
+        text: "The names of all current company secretaries."
+      }
+          },
+          {
+            value: "company-objects",
+            text: "Objects",
+            hint: {
+        text: "The first few lines of the company objects."
+      }
+          },
+          {
+            value: "registered-office",
+            text: "Registered office",
+            hint: {
+      }
+
           }
         ]
       }) }}
 
-      {{ govukTextarea({
-        name: "more-detail",
-        id: "more-detail",
-        label: {
-          text: "Extra information"
-        },
-        hint: {
-          text: "Add any details about the extra information you need."
-        }
-      }) }}
+
 
 
         {{ govukButton({
