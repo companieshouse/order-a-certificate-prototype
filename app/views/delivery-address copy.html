@@ -15,20 +15,67 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/delivery-address" method="post">
+      <form action="/delivery-address-name" method="post">
         {% call govukFieldset({
           legend: {
-            text: "What is the delivery address?",
+            text: "What are the delivery details?",
             classes: "govuk-fieldset__legend--xl",
             isPageHeading: true
           }
         }) %}
 
-        {% if errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
+        {% if errorFirstName  == true or errorLastName == true or errorAddressLineOne  == true or errorTownCity == true or errorPostcode == true %}
 
           {{ govukErrorSummary({
               titleText: "There is a problem",
               errorList: errorList
+          }) }}
+        {% endif %}
+
+
+        {% if errorFirstName  == true %}
+          {{ govukInput({
+            label: {
+            text: "First name"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "first-name",
+          name: "first-name",
+          errorMessage: {
+            text: "Enter your first name"
+          }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+            text: "First name"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "first-name",
+          name: "first-name"
+          }) }}
+        {% endif %}
+
+        {% if errorLastName  == true %}
+          {{ govukInput({
+            label: {
+            text: "Last name"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "last-name",
+          name: "last-name",
+          errorMessage: {
+              text: "Enter your last name"
+            }
+          }) }}
+        {% else %}
+          {{ govukInput({
+            label: {
+            text: "Last name"
+          },
+          classes: "govuk-!-width-two-thirds",
+          id: "last-name",
+          name: "last-name"
           }) }}
         {% endif %}
 

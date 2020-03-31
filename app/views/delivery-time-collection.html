@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Tell us about delivery
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/delivery-extra-copy"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/delivery-time-collection" method="post">
+        {% if error  == true %}
+          {{ govukErrorSummary({
+              titleText: "There is a problem",
+              errorList: errorList
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "delivery-time-collection",
+            name: "delivery-time-collection",
+            fieldset: {
+              legend: {
+                text: "When would you like to receive the certificate?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            errorMessage: {
+              text: "Select when you would like the certificate delivered"
+            },
+            items: [
+              {
+                value: "express-collection",
+                text: "Express collection and an email copy (£50.00)",
+                hint: { 
+                  html: "Order by 2pm for collection today. Orders made after 2pm or at the weekend will be ready for collection the next working day (Mon - Fri)."
+                }
+              },
+              {
+                value: "standard-collection",
+                text: "Standard collection (£15.00)",
+                hint: {
+                  text:"Ready for collection within 4 working days."
+              }
+              }
+            ]
+          }) }}
+
+          {% else %}
+
+          {{ govukRadios({
+            idPrefix: "delivery-time-collection",
+            name: "delivery-time-collection",
+            fieldset: {
+              legend: {
+                text: "When would you like to receive the certificate?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--xl"
+              }
+            },
+            items: [
+              {
+                value: "next-day",
+                text: "Express collection and an email copy (£50.00)",
+                hint: { 
+                  html: "Order by 2pm for collection today. Orders made after 2pm or at the weekend will be ready for collection the next working day (Mon - Fri)."
+                }
+              },
+              {
+                value: "standard",
+                text: "Standard collection (£15.00)",
+                hint: {
+                  text:"Ready for collection within 4 working days."
+              }
+              }
+            ]
+          }) }}
+          {% endif %}
+
+          {{ govukButton({
+           text: "Continue"
+          }) }}
+
+        </form>
+      </div>
+    </div>
+{% endblock %}

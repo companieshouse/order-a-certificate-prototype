@@ -66,7 +66,7 @@
                     text: "Company name"
                   },
                   value: {
-                    text: "Filings LTD"
+                    text: "Stationary LTD"
                   }
                 },
                 {
@@ -104,10 +104,19 @@
                 },
                 {
                   key: {
-                    text: "Delivery type"
+                    text: "Delivery or collection"
                   },
                   value: {
-                    text: "Standard collection (up to 4 working days)"
+                    text: "Standard collection (within 4 working days)"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Standard collection"
+                      }
+                    ]
                   }
                 },
                 {
@@ -139,7 +148,8 @@
             }) }}
 
         {{ govukButton({
-          text: "Continue"
+          text: "Continue",
+          href:"payment-review"
         }) }}
 
       </form>

@@ -35,7 +35,7 @@ router.post('/CHS-signin', function(req, res) {
 	}
 	else
 	{
-		res.redirect('order-details')
+		res.redirect('good-standing')
 	}
 })
 
@@ -65,11 +65,19 @@ router.post('/collection', function(req, res) {
 	}
 	else
 	{
-		res.redirect('check-details')	
+
+		if(req.session.data['delivery-type'] == "collection"){
+
+			res.redirect('check-details-collection')
+		}
+		else
+		{
+			res.redirect('check-details-delivery')
+		}	
 	}
 })
 
-router.post('/order-details', function(req, res) {
+router.post('/order-details-collection', function(req, res) {
 
 	var errors = [];
     var firstNameHasError = false;
@@ -86,7 +94,7 @@ router.post('/order-details', function(req, res) {
 	}
 
 	if(firstNameHasError || lastNameHasError){
-		res.render('order-details', {
+		res.render('order-details-collection', {
         	errorFirstName: firstNameHasError,
         	errorLastName: lastNameHasError,
         	errorList: errors
@@ -94,7 +102,36 @@ router.post('/order-details', function(req, res) {
 	}
 	else
 	{
-		res.redirect('good-standing')
+		res.redirect('collection')
+	}
+})
+
+router.post('/order-details-delivery', function(req, res) {
+
+	var errors = [];
+    var firstNameHasError = false;
+    var lastNameHasError = false;
+	
+	if(req.session.data['first-name'] == ""){
+		firstNameHasError = true;
+		errors.push({text: "Enter your first name", href: "#first-name-error"});
+	}
+	
+	if(req.session.data['last-name'] == ""){
+        lastNameHasError = true;
+        errors.push({text: "Enter your last name", href: "#last-name-error"});
+	}
+
+	if(firstNameHasError || lastNameHasError){
+		res.render('order-details-delivery', {
+        	errorFirstName: firstNameHasError,
+        	errorLastName: lastNameHasError,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('delivery-address')
 	}
 })
 
@@ -126,11 +163,11 @@ router.post('/delivery-type', function(req, res) {
 	{
 		if(req.session.data['delivery-type'] == "collection"){
 
-			res.redirect('collection')
+			res.redirect('order-details-collection')
 		}
 		else
 		{
-			res.redirect('delivery-address')
+			res.redirect('order-details-delivery')
 		}
 	}
 })
@@ -167,8 +204,104 @@ router.post('/delivery-address', function(req, res) {
 	}
 	else
 	{
-		res.redirect('check-details')
+		res.redirect('check-details-delivery')
 	}
+})
+
+router.post('/delivery-address-name', function(req, res) {
+
+	var errors = [];
+    var buildingStreetHasError = false;
+    var townCityHasError = false;
+    var postcodeHasError = false;
+	var firstNameHasError = false;
+    var lastNameHasError = false;
+	
+	if(req.session.data['first-name'] == ""){
+		firstNameHasError = true;
+		errors.push({text: "Enter your first name", href: "#first-name-error"});
+	}
+	
+	if(req.session.data['last-name'] == ""){
+        lastNameHasError = true;
+        errors.push({text: "Enter your last name", href: "#last-name-error"});
+	}
+
+	if(req.session.data['address-line-1'] == ""){
+		buildingStreetHasError = true;
+		errors.push({text: "Enter a building and street", href: "#building-street-error"});
+	}
+	
+	if(req.session.data['address-town'] == ""){
+        townCityHasError = true;
+        errors.push({text: "Enter a town or city", href: "#town-city-error"});
+	}
+
+	if(req.session.data['address-postcode'] == ""){
+        postcodeHasError = true;
+        errors.push({text: "Enter a postcode", href: "#postcode-error"});
+	}
+
+	if(buildingStreetHasError || townCityHasError || postcodeHasError){
+		res.render('delivery-address-name', {
+			errorFirstName: firstNameHasError,
+        	errorLastName: lastNameHasError,
+        	errorAddressLineOne: buildingStreetHasError,
+        	errorTownCity: townCityHasError,
+        	errorPostcode: postcodeHasError,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+		res.redirect('check-details-delivery')
+	}
+})
+
+
+router.post('/delivery-time-collection', function(req, res) {
+	var errors = [];
+	if(typeof req.session.data['delivery-time-collection'] == 'undefined'){
+		errors.push({text: "Select when you would like the certificate delivered", href: "#delivery-time-collection-error"});
+		res.render('delivery-time-collection', {
+        	error: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+			res.redirect('')
+		
+	}
+})
+
+router.post('/email', function(req, res) {
+	var errors = [];
+	if(typeof req.session.data['email'] == 'undefined'){
+		errors.push({text: "Select yes if you would like a copy of the certificate sent to you by email", href: "#email-error"});
+		res.render('email', {
+        	error: true,
+        	errorList: errors
+      	})
+	}
+	else
+	{
+			res.redirect('')
+		
+	}
+})
+
+router.post('/payment-review', function(req, res) {
+	var errors = [];
+	var backtopage =[];
+	if(req.session.data['delivery-type'] == "collection"){
+
+			backtopage = res.redirect('order-details-collection');
+		}
+		else
+		{
+			res.redirect('order-details-delivery')
+		}
 })
 
 module.exports = router

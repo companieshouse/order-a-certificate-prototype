@@ -12,7 +12,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: "Back",
-    href: "delivery-address"
+    href: "collection"
   }) }}
 {% endblock %}
 
@@ -23,21 +23,6 @@
         <form action="/payment-review" method="post">
 
             <h1 class="govuk-heading-xl">Check your order details</h1>
-            <h2 class="govuk-heading-m">Contact details</h2>
-
-            {{ govukSummaryList({
-              classes: 'govuk-!-margin-bottom-9',
-              rows: [
-                {
-                  key: {
-                    text: "Email"
-                  },
-                  value: {
-                    html: '<p class="govuk-body">h.thomas@example.com</p>'
-                  }
-                }
-              ]
-            }) }}
 
             <h2 class="govuk-heading-m">Order details</h2>
 
@@ -46,7 +31,8 @@
               rows: [
                 {
                   key: {
-                    text: "Company name"
+                    text: "Company name",
+                    classes: 'govuk-!-width-one-half'
                   },
                   value: {
                     text: "Stationary LTD"
@@ -70,10 +56,10 @@
                 },
                  {
                   key: {
-                    text: "Good standing"
+                    text: "Certificate information"
                   },
                   value: {
-                    text: "Yes"
+                    html: "Good standing <br> Directors<br> Company objects<br> Secretaries<br> Registered office address"
                   },
                   actions: {
                     items: [
@@ -87,19 +73,10 @@
                 },
                 {
                   key: {
-                    text: "Delivery or collection"
+                    text: "Delivery"
                   },
                   value: {
                     text: "Standard delivery (within 4 working days)"
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "#",
-                        text: "Change",
-                        visuallyHiddenText: "good standing"
-                      }
-                    ]
                   }
                 },
                 {
