@@ -9,7 +9,7 @@
 {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
 
 {% block pageTitle %}
-  Tell us the delivery type 
+  Tell us the delivery type
 {% endblock %}
 
 {% block beforeContent %}
@@ -34,10 +34,13 @@
             name: "email-of-certificate-",
             fieldset: {
               legend: {
-                text: "Would you like a copy of the certificate by email?",
+                text: "Would you like a copy of the certificate sent to you by email?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
               }
+            },
+            hint: {
+              text: "We will send the certificate to the email address you signed in with."
             },
             items: [
               {
@@ -57,10 +60,13 @@
             name: "email-of-certificate-",
             fieldset: {
               legend: {
-                text: "Would you like a copy of the certificate by email?",
+                text: "Would you like a copy of the certificate sent to you by email?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--xl"
               }
+            },
+            hint: {
+              text: "We will send the certificate to the email address you signed in with."
             },
             items: [
               {
@@ -78,7 +84,7 @@
         {{ govukButton({
           text: "Continue"
         }) }}
-        
+
       </form>
     </div>
   </div>
