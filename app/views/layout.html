@@ -35,6 +35,10 @@
   {% include "includes/head.html" %}
 {% endblock %}
 
+{% block headIcons %}
+<link rel="shortcut icon" href="{{ params.assetsPath | default('/public/images') }}/chs.ico" type="images/x-icon" />
+{% endblock %}
+
 {% block pageTitle %}
   GOV.UK Prototype Kit
 {% endblock %}
