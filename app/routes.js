@@ -89,6 +89,11 @@ router.post('/delivery-address-name', function(req, res) {
 	}
 })
 
+router.post('/certificate-details-MVP', function(req, res) {
+
+		res.redirect('delivery-address-name')
+})
+
 router.post('/payment-review', function(req, res) {
 	var errors = [];
 	var backtopage =[];
