@@ -22,7 +22,22 @@
       }) }}
 
       <h1 class="govuk-heading-m">What happens next</h1>
-      <p class="govuk-body">We'll prepare the certificate and dispatch it within 4 working days.</p>
+      <p class="govuk-body">We'll prepare the certificate and dispatch it within 4 working days. </p>
+
+      {{ govukInsetText({
+        html: "<p class='govuk-body govuk-!-font-weight-bold'>You will not be sent an email confirmation of this order.</p> 
+
+        <ul class='govuk-list'>
+        <li>
+          <img src='/public/images/print-icon.png'  alt='-'/>
+          <a class='govuk-link' href='javascript:window.print()'>
+            Print your order confirmation
+          </a> 
+        </li>
+      </ul>"
+
+      }) }}
+
 
       <h2 class="govuk-heading-m">Your order details</h2>
 
@@ -120,13 +135,7 @@
       <p>Include your order reference number when you contact us. </p>
 
 
-      <h2 class="govuk-heading-m">What do you want to do next?</h2>
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="" class="govuk-link">print this page for your records</a></li>
-        <li><a href="start" class="govuk-link">return to company overview</a></li>
-      </ul>
-
-
+      
 
 
  </div>
