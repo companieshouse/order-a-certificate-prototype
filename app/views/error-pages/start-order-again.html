@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Page not found
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Page not found</h1>
+        <p class="govuk-body">
+          If you pasted the web address and wanted to order a certificate, you will need to start the order again.
+        </p>
+
+        <p class="govuk-body"> To order a certificate <a href="#" class="govuk-link">go to the Companies House service </a> and search for the company you want to order the certificate for.  The Order a certificate service can be found within the More tab.
+        </p>
+
+        <p class="govuk-body"><a href="https://www.gov.uk/contact-companies-house" class="govuk-link">Contact Companies House</a> if you need to speak to someone about ordering a certificate. </p> 
+    </div>
+  </div>
+{% endblock %}
+
