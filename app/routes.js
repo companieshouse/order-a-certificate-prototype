@@ -1,5 +1,7 @@
 const express = require('express')
+const app = express()
 const router = express.Router()
+
 
 // Add your routes here - above the module.exports line
 
@@ -9,6 +11,20 @@ router.get('/', function (req, res) {
   router.get('/start', function (req, res) {
     res.render('start')
   });
+
+  router.post('/more-tab-active-company', function (req, res) {
+
+  	app.set('compType', 'incorporation');
+    res.redirect('order-a-certificate-incorporation')
+  });
+
+  router.post('/more-tab-dissolved-company', function (req, res) {
+
+  	app.set('compType', 'dissolved');
+    res.redirect('order-a-certificate-dissolved')
+  });
+
+
 
 router.post('/CHS-signin', function(req, res) {
 
@@ -35,7 +51,15 @@ router.post('/CHS-signin', function(req, res) {
 	}
 	else
 	{
-		res.redirect('certificate-details-MVP')
+		if(app.settings.compType == 'incorporation')
+		{
+			res.redirect('certificate-details-incorporation')
+		}
+		else if(app.settings.compType == 'dissolved')
+		{
+			res.redirect('delivery-address-name')
+		}
+		
 	}
 })
 
@@ -85,11 +109,21 @@ router.post('/delivery-address-name', function(req, res) {
 	}
 	else
 	{
-		res.redirect('check-details-MVP')
+		
+
+		if(app.settings.compType == 'incorporation')
+		{
+			res.redirect('check-details-incorporation')
+		}
+		else if(app.settings.compType == 'dissolved')
+		{
+			res.redirect('check-details-dissolved')
+		}
+		
 	}
 })
 
-router.post('/certificate-details-MVP', function(req, res) {
+router.post('/certificate-details-incorporation', function(req, res) {
 
 		res.redirect('delivery-address-name')
 })
