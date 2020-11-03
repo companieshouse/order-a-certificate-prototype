@@ -1,0 +1,58 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Tell us about the delivery details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/delivery-time-option" method="post">
+
+      {{ govukRadios({
+        idPrefix: "delivery-option",
+        name: "delivery-option",
+        fieldset: {
+          legend: {
+            text: "When would you like to receive the certificate?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: " ."
+        },
+        items: [
+          {
+            value: "express",
+            text: "Express (£50)",
+            hint: {
+              text: "Aim to dispatch within 1 working days"
+            }
+          },
+          {
+            value: "standard",
+            text: "Standard (£15)",
+            hint: {
+              text: "Aim to dispatch within 4 working days"
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+  </div>
+</div>  
+{% endblock %}
