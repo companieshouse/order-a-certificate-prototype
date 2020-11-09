@@ -1,0 +1,61 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Director details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/registered-office-options" method="post">
+
+      {{ govukRadios({
+        idPrefix: "registered-office",
+        name: "registered-office",
+        fieldset: {
+          legend: {
+            text: "Which registered office addresses would you like to be included on the certificate?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Registered office address, no dates  included."
+        },
+        items: [
+          {
+            value: "current",
+            text: "Current"
+          },
+          {
+            value: "all",
+            text: "Current and previous"
+          },
+          {
+            value: "current",
+            text: "Current, previous and prior"
+          },
+          {
+            value: "all",
+            text: "All"
+          }
+        ]
+      }) }}
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+  </div>
+</div>  
+{% endblock %}
