@@ -125,11 +125,21 @@ router.post('/delivery-address-name', function(req, res) {
 
 router.post('/certificate-details-incorporation', function(req, res) {
 
-		res.redirect('delivery-time-option')
+		res.redirect('registered-office-options')
+})
+
+router.post('/registered-office-options', function(req, res) {
+
+		res.redirect('director-options')
+})
+
+router.post('/director-options', function(req, res) {
+
+		res.redirect('secretary-options')
 })
 
 
-router.post('/delivery-time-option', function(req, res) {
+router.post('/secretary-options', function(req, res) {
 
 		res.redirect('delivery-address-name')
 })
