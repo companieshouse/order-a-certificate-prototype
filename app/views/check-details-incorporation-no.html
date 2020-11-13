@@ -1,0 +1,187 @@
+
+{% extends "layout.html" %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Check your order details
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "delivery-address-name"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+        <form action="/payment-review" method="post">
+
+            <h1 class="govuk-heading-xl">Check your order details</h1>
+
+            <h2 class="govuk-heading-m">Order details</h2>
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
+                {
+                  key: {
+                    text: "Company name",
+                    classes: 'govuk-!-width-one-half'
+                  },
+                  value: {
+                    text: "JOHN LEWIS"
+                  }
+                },
+                {
+                  key: {
+                    text: "Company number"
+                  },
+                  value: {
+                    text: "00233462"
+                  }
+                },
+                {
+                  key: {
+                    text: "Certificate type"
+                  },
+                  value: {
+                    text: "Incorporation with all company name changes"
+                  }
+                },
+                 {
+                  key: {
+                    text: "Statement of good standing"
+                  },
+                  value: {
+                    html:"Yes"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Included on certifcate"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Registered office address"
+                  },
+                  value: {
+                    html:"No"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Included on certifcate"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "The names of all current company directors"
+                  },
+                  value: {
+                    text:"No"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Included on certifcate"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "The names of all current company secretaries"
+                  },
+                  value: {
+                    text:"No"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Included on certifcate"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Company objects"
+                  },
+                  value: {
+                    text:"No"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "Included on certifcate"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Delivery method"
+                  },
+                  value: {
+                    text: "Standard delivery (aim to dispatch within 4 working days)"
+                  }
+                },
+                {
+                  key: {
+                    text: "Delivery details"
+                  },
+                  value: {
+                    html: "Mr Jamies Hanson </br> 48 Tonna Road </br> Barry </br> CF45 8YG"
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "#",
+                        text: "Change",
+                        visuallyHiddenText: "delivery address"
+                      }
+                    ]
+                  }
+                },
+                {
+                  key: {
+                    text: "Fee"
+                  },
+                  value: {
+                    text: "£15"
+                  }
+                }
+              ]
+            }) }}
+
+        {{ govukButton({
+          text: "Continue to payment",
+          href:"https://products.payments.service.gov.uk/pay/cfe2a72b93f345e088e02fbcd20ad109"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
