@@ -60,15 +60,6 @@
                   },
                   value: {
                     html:"Yes"
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "certificate-details-incorporation",
-                        text: "Change",
-                        visuallyHiddenText: "Included on certifcate"
-                      }
-                    ]
                   }
                 },
                 {
@@ -77,15 +68,6 @@
                   },
                   value: {
                     html:"Current and previous"
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "registered-office-options",
-                        text: "Change",
-                        visuallyHiddenText: "Included on certifcate"
-                      }
-                    ]
                   }
                 },
                 {
@@ -93,16 +75,7 @@
                     text: "The names of all current company directors"
                   },
                   value: {
-                    html:"Including directors:<br><br> Address<br> Occupation<br> Directors <br> Date of birth<br>Appointment date<br> Nationaility"
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "director-options",
-                        text: "Change",
-                        visuallyHiddenText: "Included on certifcate"
-                      }
-                    ]
+                    text:"Yes"
                   }
                 },
                 {
@@ -110,16 +83,7 @@
                     text: "The names of all current company secretaries"
                   },
                   value: {
-                    html:"Including secretaries:<br><br>Address<br> Occupation<br> Directors <br> Date of birth<br>Appointment date<br> Nationaility<br>Country of residence"
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "secretary-options",
-                        text: "Change",
-                        visuallyHiddenText: "Included on certifcate"
-                      }
-                    ]
+                    text:"No"
                   }
                 },
                 {
@@ -128,15 +92,25 @@
                   },
                   value: {
                     html:"Yes"
+                  }
+                }
+              ]
+            }) }}
+
+            <p class="govuk-body"> To select different options for the certificate, <a href="#" class="govuk-link">start the order again </a>.</p>
+
+            <h2 class="govuk-heading-m">Delivery details</h2>
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
+                {
+                  key: {
+                    text: "Company name",
+                    classes: 'govuk-!-width-one-half'
                   },
-                  actions: {
-                    items: [
-                      {
-                        href: "#",
-                        text: "Change",
-                        visuallyHiddenText: "Included on certifcate"
-                      }
-                    ]
+                  value: {
+                    text: "JOHN LEWIS"
                   }
                 },
                 {

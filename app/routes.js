@@ -109,8 +109,7 @@ router.post('/delivery-address-name', function(req, res) {
 	}
 	else
 	{
-		
-
+	
 		if(app.settings.compType == 'incorporation')
 		{
 			res.redirect('check-details-incorporation')
@@ -131,7 +130,7 @@ router.post('/certificate-details-incorporation', function(req, res) {
 router.post('/registered-office-options', function(req, res) {
 	var errors = [];
 	if(typeof req.session.data['registered-office-options'] == 'undefined'){
-		errors.push({text: "Select which registered office information you need on the certificate", href: "#registered-office-options-error"});
+		errors.push({text: "Select which registered office information you need on your certificate", href: "#registered-office-options-error"});
 		res.render('registered-office-options', {
         	error: true,
         	errorList: errors
