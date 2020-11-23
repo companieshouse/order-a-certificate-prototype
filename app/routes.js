@@ -130,7 +130,7 @@ router.post('/certificate-details-incorporation', function(req, res) {
 router.post('/registered-office-options', function(req, res) {
 	var errors = [];
 	if(typeof req.session.data['registered-office-options'] == 'undefined'){
-		errors.push({text: "Select which registered office information you need on your certificate", href: "#registered-office-options-error"});
+		errors.push({text: "Select which registered office address you need on your certificate", href: "#registered-office-options-error"});
 		res.render('registered-office-options', {
         	error: true,
         	errorList: errors
@@ -138,7 +138,7 @@ router.post('/registered-office-options', function(req, res) {
 	}
 	else
 	{
-		res.redirect('director-options')
+		res.redirect('delivery-address-name')
 	}
 
 })
