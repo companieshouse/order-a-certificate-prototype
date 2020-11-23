@@ -17,9 +17,53 @@
     <div class="govuk-grid-column-two-thirds">
       <form action="/registered-office-options" method="post">
 
+      {% if error  == true %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorList
+      }) }}
+
+
       {{ govukRadios({
         idPrefix: "registered-office",
-        name: "registered-office",
+        name: "registered-office-options",
+        fieldset: {
+          legend: {
+            text: "What registered office address information do you need?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        errorMessage: {
+              text: "Select which registered office information you need on the certificate"
+        },
+        hint: {
+          text: "No dates  included."
+        },
+        items: [
+          {
+            value: "current",
+            text: "Current"
+          },
+          {
+            value: "all",
+            text: "Current and previous"
+          },
+          {
+            value: "current",
+            text: "Current, previous and prior"
+          },
+          {
+            value: "all",
+            text: "All"
+          }
+        ]
+      }) }}
+
+      {% else %}
+       {{ govukRadios({
+        idPrefix: "registered-office",
+        name: "registered-office-options",
         fieldset: {
           legend: {
             text: "What registered office address information do you need?",
@@ -49,6 +93,7 @@
           }
         ]
       }) }}
+      {% endif %} 
 
 
       {{ govukButton({
