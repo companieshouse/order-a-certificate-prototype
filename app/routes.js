@@ -145,7 +145,7 @@ router.post('/registered-office-options', function(req, res) {
 
 router.post('/director-options', function(req, res) {
 
-		res.redirect('delivery-address-name')
+		res.redirect('secretary-options')
 })
 
 
