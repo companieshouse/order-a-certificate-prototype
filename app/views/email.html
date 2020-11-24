@@ -1,0 +1,151 @@
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+            
+            <h2 class="govuk-heading-m">Order details</h2>
+
+            {{ govukSummaryList({
+              classes: 'govuk-!-margin-bottom-9',
+              rows: [
+                {
+                  key: {
+                    text: "Order reference number",
+                    classes: 'govuk-!-width-one-half'
+                  },
+                  value: {
+                    text: "3161-204-251-249-0359"
+                  }
+                },
+                {
+                  key: {
+                    text: "Email address",
+                    classes: 'govuk-!-width-one-half'
+                  },
+                  value: {
+                    text: "mail@example.com"
+                  }
+                },
+                {
+                  key: {
+                    text: "Delivery method"
+                  },
+                  value: {
+                    text: "Standard delivery (aim to dispatch within 4 working days)"
+                  }
+                },
+                {
+                  key: {
+                    text: "Fee"
+                  },
+                  value: {
+                    text: "£15"
+                  }
+                },
+                {
+                  key: {
+                    text: "Date and time of payment"
+                  },
+                  value: {
+                    html: "11 March 2020 – 10:56:14"
+                  }
+                },
+                {
+                  key: {
+                    text: "Payment reference"
+                  },
+                  value: {
+                    text: "RS5VSN6DRE"
+                  }
+                }
+              ]
+            }) }}
+
+            <h2 class="govuk-heading-m">Certificate details</h2>
+
+        {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+
+                {
+                  key: {
+                    text: "Company name",
+                    classes: 'govuk-!-width-one-half'
+                  },
+                  value: {
+                    text: "JOHN LEWIS"
+                  }
+                },
+                {
+                  key: {
+                    text: "Company number"
+                  },
+                  value: {
+                    text: "00233462"
+                  }
+                },
+                {
+                  key: {
+                    text: "Certificate type"
+                  },
+                  value: {
+                    text: "Incorporation with all company name changes"
+                  }
+                },
+                 {
+                  key: {
+                    text: "Statement of good standing"
+                  },
+                  value: {
+                    html:"Yes"
+                  }
+                },
+                {
+                  key: {
+                    text: "Registered office address"
+                  },
+                  value: {
+                    html:"Current and previous"
+                  }
+                },
+                {
+                  key: {
+                    text: "The names of all current company directors"
+                  },
+                  value: {
+                    text:"Yes"
+                  }
+                },
+                {
+                  key: {
+                    text: "The names of all current company secretaries"
+                  },
+                  value: {
+                    html:"Yes"
+                  }
+                },
+                {
+                  key: {
+                    text: "Company objects"
+                  },
+                  value: {
+                    html:"Yes"
+                  }
+                }
+              ]
+            }) }}
+
+        {{ govukButton({
+          text: "Continue to payment",
+          href:"https://products.payments.service.gov.uk/pay/f43a9cf88afa422cb58797f155ec880b"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
