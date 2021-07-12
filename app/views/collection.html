@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Which Companies House office do you want to collect from?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/collection" method="post">
+
+
+
+      {{ govukRadios({
+        idPrefix: "collection",
+        name: "collection",
+        fieldset: {
+          legend: {
+            text: "Which Companies House office do you want to collect from?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "Opening hours are between 9am and 5pm (Monday to Friday)."
+        },
+        items: [
+          {
+            value: "belfast",
+            text: "Belfast"
+            
+          },
+          {
+            value: "cardiff",
+            text: "Cardiff"
+          },
+          {
+            value: "edinburgh",
+            text: "Edinburgh"
+          },
+          {
+            value: "london",
+            text: "London"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+  </div>
+</div>  
+{% endblock %}

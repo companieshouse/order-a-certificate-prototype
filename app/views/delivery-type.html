@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  When would you like to receive the certificate
+  How would you like to receive the certificate?
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,32 +15,31 @@
 {% block content %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/delivery-time-option" method="post">
+      <form action="/delivery-type" method="post">
+
+
 
       {{ govukRadios({
-        idPrefix: "delivery-option",
-        name: "delivery-option",
+        idPrefix: "delivery-type",
+        name: "delivery-type",
         fieldset: {
           legend: {
-            text: "When would you like to receive the certificate?",
+            text: "How would you like to receive the certificate?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--xl"
           }
         },
         items: [
           {
-            value: "express",
-            text: "Express (£50)",
+            value: "collection",
+            text: "Collect from a Companies House office",
             hint: {
-              text: "Aim to dispatch within 1 working day"
+              text: "including Belfast, Cardiff, Edinburgh and London"
             }
           },
           {
-            value: "standard",
-            text: "Standard (£15)",
-            hint: {
-              text: "Aim to dispatch within 4 working days"
-            }
+            value: "delivery",
+            text: "Delivery"
           }
         ]
       }) }}
