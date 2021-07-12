@@ -1,0 +1,54 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Would you like a copy of the certificate sent to you by email?
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: ""
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form action="/delivery-type" method="post">
+
+
+
+      {{ govukRadios({
+        idPrefix: "delivery-type",
+        name: "delivery-type",
+        fieldset: {
+          legend: {
+            text: "Would you like a copy of the certificate sent to you by email?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--xl"
+          }
+        },
+        hint: {
+          text: "We will send the certificate to the email address you signed in with."
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+  </div>
+</div>  
+{% endblock %}
